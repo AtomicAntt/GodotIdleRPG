@@ -18,3 +18,6 @@ func _physics_process(delta: float) -> void:
 func setIdle() -> void: # move to inheritence later
 	$AnimationPlayer.play("idle")
 	state = States.IDLE
+	
+func getSprite() -> Sprite2D:
+	return $Sprite2D
