@@ -3,7 +3,7 @@ extends CharacterBody2D
 enum States {IDLE, WANDER, CHASE, COMBAT, DEAD}
 var state: States
 
-var speed: float = 200.0
+var speed: float = 60.0
 var sightRange: float = 200.0
 var enemyTarget: CharacterBody2D
 
@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 					engageCombat() # Which will set state to combat
 					return
 				
+				$AnimationPlayer.play("run")
 				var currentAgentPosition: Vector2 = global_position
 				var nextPathPosition: Vector2 = navigationAgent.get_next_path_position()
 				
@@ -39,7 +40,9 @@ func _physics_process(delta: float) -> void:
 func engageCombat() -> void:
 	if is_instance_valid(enemyTarget):
 		state = States.COMBAT
+		$AnimationPlayer.play("idle")
 		print("now engaging in combat with enemy!")
+		
 		$AttackCooldown.start()
 		
 		# Check if player pos left of enemy pos
@@ -60,7 +63,7 @@ func leftOf(object: Vector2, target: Vector2) -> bool:
 #	await get_tree().physics_frame
 #	setMovementTarget()
 
-func setMovementTarget(movementTarget: Vector2):
+func setMovementTarget(movementTarget: Vector2) -> void:
 	# To make sure the player is to the left or right of the enemy (because attacks would look weird otherwise)
 	var newTargetPosition: Vector2 = movementTarget
 	if global_position.x < movementTarget.x:
@@ -68,7 +71,7 @@ func setMovementTarget(movementTarget: Vector2):
 	else:
 		newTargetPosition.x = movementTarget.x + 30
 		
-	newTargetPosition.y = movementTarget.y + 18
+#	newTargetPosition.y = movementTarget.y + 2
 	
 #	if global_position.y > movementTarget.x:
 #		newTargetPosition.y = movementTarget.y + 5
@@ -96,5 +99,5 @@ func setIdle() -> void: # move to inheritence later
 	state = States.IDLE
 
 
-func _on_attack_cooldown_timeout():
+func _on_attack_cooldown_timeout() -> void:
 	attack()

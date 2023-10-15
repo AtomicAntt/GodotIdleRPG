@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvx0vxb3cybqi" path="res://GameAssets/Enemies/fungant_.png" id="2_nymbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bgv6"]
-size = Vector2(10, 12)
+size = Vector2(10, 3)
 
 [sub_resource type="Animation" id="Animation_ssg57"]
 length = 0.001
@@ -117,7 +117,7 @@ _data = {
 script = ExtResource("1_od1qw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_3bgv6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

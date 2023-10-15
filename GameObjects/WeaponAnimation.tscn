@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccdoeljkegslq"]
+
+[ext_resource type="Texture2D" uid="uid://cy7e03j0phejr" path="res://GameAssets/Weapons/sword_ [stone].png" id="1_wd48d"]
+
+[node name="WeaponSprite" type="Sprite2D"]
+z_index = 1
+texture_filter = 1
+rotation = -1.5708
+texture = ExtResource("1_wd48d")
+flip_h = true
+hframes = 4
+vframes = 4
