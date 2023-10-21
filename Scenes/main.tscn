@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf5qa6qow0u3b"]
+[gd_scene load_steps=3 format=3 uid="uid://cf5qa6qow0u3b"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_7s8yx"]
+[ext_resource type="PackedScene" uid="uid://caej3pqfnpk5q" path="res://GameObjects/UsernameGenerator.tscn" id="2_dud74"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -17,3 +18,5 @@ script = ExtResource("1_7s8yx")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="UsernameGenerator" parent="." instance=ExtResource("2_dud74")]
