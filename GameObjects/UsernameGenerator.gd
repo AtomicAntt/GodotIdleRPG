@@ -47,6 +47,60 @@ Things to note:
 
 """
 
+
+enum NameBaseTypes{
+	WORD,
+	COMBINE,
+	REALNAME,
+	BOT,
+	IMAGINARY
+}
+
+var NameBaseChances: Dictionary = {
+	NameBaseTypes.COMBINE: 0.4,
+	NameBaseTypes.IMAGINARY: 0.34,
+	NameBaseTypes.WORD: 0.2,
+	NameBaseTypes.REALNAME: 0.05,
+	NameBaseTypes.BOT: 0.01,
+}
+
+enum NameFormatTypes{
+	LOWERCASE,
+	PASCALCASE,
+	CAMELCASE,
+	SNAKECASE,
+	UPPERCASE,
+}
+
+var NameFormatChances: Dictionary = {
+	NameFormatTypes.LOWERCASE: 0.35,
+	NameFormatTypes.PASCALCASE: 0.35,
+	NameFormatTypes.SNAKECASE: 0.15,
+	NameFormatTypes.CAMELCASE: 0.15,
+}
+
+enum NameModifierTypes{
+	NONE,
+	SUBSTITUTION,
+	FRAMES,
+	NUMBER,
+	SUFFIX,
+	PREFIX,
+	DUPE,
+	REPEAT
+}
+
+var NameModifierChances: Dictionary = {
+	NameModifierTypes.NONE: 0.7,
+	NameModifierTypes.NUMBER: 0.12,
+	NameModifierTypes.SUBSTITUTION: 0.07,
+	NameModifierTypes.FRAMES: 0.02,
+	NameModifierTypes.SUFFIX: 0.03,
+	NameModifierTypes.PREFIX: 0.03,
+	NameModifierTypes.DUPE: 0.02,
+	NameModifierTypes.REPEAT: 0.01
+}
+
 var bannedCharactersForData: Array = [' ', '.', '-', '_', "'"]
 
 var adjectivesDataFilePath: String = "res://GameAssets/jsonFiles/adjectives.json"
@@ -55,14 +109,112 @@ var adjectivesArray: Array
 var nounsDataFilePath: String = "res://GameAssets/jsonFiles/nouns.json"
 var nounsArray: Array
 
+var suffixDataFilePath: String = "res://GameAssets/jsonFiles/suffix.json"
+var suffixArray: Array
+
+var prefixDataFilePath: String = "res://GameAssets/jsonFiles/prefix.json"
+var prefixArray: Array
+
 var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
-	jsonTestCase()
+#	jsonTestCase()
 #	modifierTestCases()
-	usernameTestCases()
+#	usernameTestCases()
+	loadJsonFiles(adjectivesDataFilePath, adjectivesArray)
+	loadJsonFiles(nounsDataFilePath, nounsArray)
+	loadJsonFiles(suffixDataFilePath, suffixArray)
+	loadJsonFiles(prefixDataFilePath, prefixArray)
+	
+	print("I will now proceed to print 100 usernames:")
+	for i in range(100):
+		print(str(i) + ":" + returnRandomUsername())
 #	pass
 
+# most important function that the game may call to give a player the username
+func returnRandomUsername() -> String:
+	
+	var nameBaseType: NameBaseTypes = selectRandomType(NameBaseChances)
+	var usernameArray: Array = returnNameBaseType(nameBaseType) 
+	var username: String # end result
+	if nameBaseType != NameBaseTypes.BOT: # bots dont put frames or the alike
+		var nameModifiedType: NameModifierTypes = selectRandomType(NameModifierChances)
+		username = returnModified(nameModifiedType, usernameArray)
+	else:
+		username = "".join(PackedStringArray(usernameArray))
+	var nameFormatType: NameFormatTypes = selectRandomType(NameFormatChances)
+	username = returnFormatted(nameFormatType, username)
+
+	return username
+
+func returnNameBaseType(nameBaseType: int) -> Array:
+#	print("name base type: " +str(nameBaseType))
+#	print(NameBaseTypes.BOT)
+#	print(NameBaseTypes.COMBINE)
+	match nameBaseType:
+		NameBaseTypes.WORD:
+			return [getRandomNoun()]
+		NameBaseTypes.COMBINE:
+			return combine()
+		NameBaseTypes.REALNAME:
+			return name()
+		NameBaseTypes.BOT:
+			return bot()
+		NameBaseTypes.IMAGINARY:
+			return imaginary()
+	print("This should never happen: returning empty array in returnNameBaseType()")
+	return []
+
+func returnModified(nameModifiedType: int, words: Array) -> String:
+	var modifiedString: String = ""
+	match nameModifiedType:
+		NameModifierTypes.NONE:
+			modifiedString = "".join(PackedStringArray(words))
+		NameModifierTypes.SUBSTITUTION:
+			modifiedString = "".join(PackedStringArray(substitution(words)))
+		NameModifierTypes.FRAMES:
+			modifiedString = "".join(PackedStringArray(frames(words)))
+		NameModifierTypes.NUMBER:
+			modifiedString = "".join(PackedStringArray(number(words)))
+		NameModifierTypes.SUFFIX:
+			modifiedString = "".join(PackedStringArray(suffix(words)))
+		NameModifierTypes.PREFIX:
+			modifiedString = "".join(PackedStringArray(prefix(words)))
+		NameModifierTypes.DUPE:
+			modifiedString = "".join(PackedStringArray(dupe(words)))
+		NameModifierTypes.REPEAT:
+			modifiedString = "".join(PackedStringArray(repeat(words)))
+	return modifiedString
+		
+func returnFormatted(nameFormatType: int, string: String) -> String:
+	var modifiedString: String = ""
+	match nameFormatType:
+		NameFormatTypes.LOWERCASE:
+			modifiedString = string.to_lower()
+		NameFormatTypes.PASCALCASE:
+			modifiedString = string.to_pascal_case()
+		NameFormatTypes.CAMELCASE:
+			modifiedString = string.to_camel_case()
+		NameFormatTypes.SNAKECASE:
+			modifiedString = string.to_snake_case()
+		NameFormatTypes.UPPERCASE:
+			modifiedString = string.to_upper()
+	return modifiedString
+
+#Technecially returns the enum value
+func selectRandomType(dictionary: Dictionary) -> int: 
+	# Let us assume the chances in dictionary add up to 1.0
+	var randomValue = rng.randf()
+	
+	var currentWeight = 0.0
+	for type in dictionary:
+		currentWeight += dictionary[type]
+		if randomValue <= currentWeight:
+			return type
+	print("The weight possibly does not add up to 1.0 in selectRandomType(), so it did not choose a random type")
+	return 0
+
+# in case json files contain chars like '-' or '.' that are not allowed
 func stringContainsBannedCharacter(string: String) -> bool:
 	for character in bannedCharactersForData:
 		if string.contains(character):
@@ -264,7 +416,8 @@ func imaginary():
 	array.append(vowels[rng.randi_range(0, vowels.size() - 1)])
 	if rng.randi_range(0,1):
 		array.append(endings[rng.randi_range(0, endings.size() - 1)])
-	return ["".join(PackedStringArray(array))]
+#	return ["".join(PackedStringArray(array))]
+	return array
 
 ## Generate a random string of letters and numbers
 func bot():
@@ -277,11 +430,12 @@ func bot():
 			array.append(letters[rng.randi_range(0, letters.size() - 1)])
 		else:
 			array.append(numbers[rng.randi_range(0, numbers.size() - 1)])
-	return ["".join(PackedStringArray(array))]
+#	return ["".join(PackedStringArray(array))]
+	return array
 
 ## Select a random word and repeat it twice or thrice.
-func repeat():
-	var words = ["bees", "cats", "cars", "objects"]
+func repeat(words: Array):
+#	var words = ["bees", "cats", "cars", "objects"]
 	var word = words[rng.randi_range(0, words.size() - 1)]
 	var array = []
 	for i in range (0, rng.randi_range(2, 3)):
@@ -298,13 +452,13 @@ func name():
 	return array
 
 func getRandomNoun() -> String:
-	return nounsArray[rng.randi_range(0, nounsArray.size()-1)].to_lower()
-#	return nounsArray[rng.randi_range(0, nounsArray.size()-1)]
+#	return nounsArray[rng.randi_range(0, nounsArray.size()-1)].to_lower()
+	return nounsArray[rng.randi_range(0, nounsArray.size()-1)]
 	
 
 func getRandomAdjective() -> String:
-	return adjectivesArray[rng.randi_range(0, adjectivesArray.size()-1)].to_lower()
-#	return adjectivesArray[rng.randi_range(0, adjectivesArray.size()-1)]
+#	return adjectivesArray[rng.randi_range(0, adjectivesArray.size()-1)].to_lower()
+	return adjectivesArray[rng.randi_range(0, adjectivesArray.size()-1)]
 	
 
 func jsonTestCase():
@@ -447,9 +601,9 @@ func usernameTestCases():
 	
 	#repeat()
 	print("This is a test of repeat():")
-	print("".join(PackedStringArray(repeat())))
-	print("".join(PackedStringArray(repeat())))
-	print("".join(PackedStringArray(repeat())))
+#	print("".join(PackedStringArray(repeat())))
+#	print("".join(PackedStringArray(repeat())))
+#	print("".join(PackedStringArray(repeat())))
 
 #	print(PoolStringArray(repeat()).join(""))
 #	print(PoolStringArray(repeat()).join(""))
