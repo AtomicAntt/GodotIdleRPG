@@ -453,7 +453,7 @@ func name():
 
 func getRandomNoun() -> String:
 #	return nounsArray[rng.randi_range(0, nounsArray.size()-1)].to_lower()
-	return nounsArray[rng.randi_range(0, nounsArray.size()-1)]
+	return nounsArray[rng.randi_range(0, nounsArray.size()-1)].capitalize()
 	
 
 func getRandomAdjective() -> String:
