@@ -19,4 +19,4 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="UsernameGenerator" parent="." instance=ExtResource("2_dud74")]
+[node name="UsernameGenerator" parent="." groups=["usernameGenerator"] instance=ExtResource("2_dud74")]

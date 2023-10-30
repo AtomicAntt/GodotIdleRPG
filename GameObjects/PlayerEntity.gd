@@ -9,8 +9,13 @@ var enemyTarget: CharacterBody2D
 
 @onready var navigationAgent: NavigationAgent2D = $NavigationAgent2D
 
+@onready var weaponAnimation := preload("res://GameObjects/WeaponAnimation.tscn")
+
+@onready var usernameGenerator := get_tree().get_nodes_in_group("usernameGenerator")[0]
+
 func _ready() -> void:
 	$AnimationPlayer.play("idle")
+	$Control/Label.text = usernameGenerator.returnRandomUsername()
 
 func _physics_process(delta: float) -> void:
 #	$AnimationPlayer.play("idle")
@@ -80,11 +85,23 @@ func setMovementTarget(movementTarget: Vector2) -> void:
 	
 	navigationAgent.target_position = newTargetPosition
 
+#func attack() -> void:
+#	if leftOf(global_position, enemyTarget.global_position):
+#		$AnimationPlayer.play("swingLeft")
+#	else:
+#		$AnimationPlayer.play("swingRight")
+
 func attack() -> void:
+	var weaponAnimationInstance = weaponAnimation.instantiate()
+	weaponAnimationInstance.global_position = enemyTarget.global_position
 	if leftOf(global_position, enemyTarget.global_position):
-		$AnimationPlayer.play("swingLeft")
+#		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x - 1
+		get_parent().add_child(weaponAnimationInstance)
+		weaponAnimationInstance.animationPlayer.play("SwingLeft") 
 	else:
-		$AnimationPlayer.play("swingRight")		
+#		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x + 1
+		get_parent().add_child(weaponAnimationInstance)
+		weaponAnimationInstance.animationPlayer.play("SwingRight")
 
 func findClosestEnemy() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemy"):

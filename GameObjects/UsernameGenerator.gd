@@ -56,7 +56,7 @@ enum NameBaseTypes{
 	IMAGINARY
 }
 
-var NameBaseChances: Dictionary = {
+var NameBaseChances: Dictionary = { # make these add up to 1.0
 	NameBaseTypes.COMBINE: 0.4,
 	NameBaseTypes.IMAGINARY: 0.34,
 	NameBaseTypes.WORD: 0.2,
