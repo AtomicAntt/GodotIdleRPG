@@ -365,11 +365,11 @@ default_font_size = 8
 script = ExtResource("1_sjrtq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_bsfuq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -11)
 texture = ExtResource("2_tx40q")
 hframes = 8
 vframes = 11
@@ -386,8 +386,8 @@ position = Vector2(22, 5)
 rotation = 1.5708
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 4.0
-target_desired_distance = 0.1
+path_desired_distance = 5.0
+target_desired_distance = 5.0
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0
@@ -397,6 +397,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 

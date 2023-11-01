@@ -5,6 +5,7 @@ var state: States
 
 var speed: float = 60.0
 var sightRange: float = 200.0
+var attackRange: float = 30.0
 var enemyTarget: CharacterBody2D
 
 @onready var navigationAgent: NavigationAgent2D = $NavigationAgent2D
@@ -28,7 +29,9 @@ func _physics_process(delta: float) -> void:
 				findClosestEnemy() # Which will set state to chase
 		States.CHASE:
 			if is_instance_valid(enemyTarget):
-				if navigationAgent.is_navigation_finished():
+				faceEnemy()
+				if navigationAgent.is_navigation_finished() and closeToEnemy():
+					attack() # attack initially right away
 					engageCombat() # Which will set state to combat
 					return
 				
@@ -41,6 +44,12 @@ func _physics_process(delta: float) -> void:
 				move_and_slide()
 			else:
 				state = States.IDLE
+#				print("Enemy is not valid, returning to idle")
+		States.COMBAT:
+			if not is_instance_valid(enemyTarget):
+				state = States.IDLE
+				print("Enemy is not valid, returning to idle")
+				
 
 func engageCombat() -> void:
 	if is_instance_valid(enemyTarget):
@@ -50,19 +59,33 @@ func engageCombat() -> void:
 		
 		$AttackCooldown.start()
 		
-		# Check if player pos left of enemy pos
-		if leftOf(global_position, enemyTarget.global_position):
-			$Sprite2D.flip_h = true
+		faceEnemy()
+		
 		# Check if enemy pos left of player pos
 		if leftOf(enemyTarget.global_position, global_position):
 			enemyTarget.getSprite().flip_h = true
 	else:
 		state = States.IDLE
 
+func closeToEnemy() -> bool:
+	if is_instance_valid(enemyTarget):
+		if enemyTarget.global_position.distance_to(global_position) <= attackRange:
+			return true
+	return false
+
 func leftOf(object: Vector2, target: Vector2) -> bool:
 	if target.x < object.x:
 		return true
 	return false
+
+func faceEnemy() -> void:
+	if not is_instance_valid(enemyTarget):
+		return
+	
+	if leftOf(global_position, enemyTarget.global_position):
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
 
 #func actorSetup() -> void:
 #	await get_tree().physics_frame
@@ -72,9 +95,9 @@ func setMovementTarget(movementTarget: Vector2) -> void:
 	# To make sure the player is to the left or right of the enemy (because attacks would look weird otherwise)
 	var newTargetPosition: Vector2 = movementTarget
 	if global_position.x < movementTarget.x:
-		newTargetPosition.x = movementTarget.x - 30
+		newTargetPosition.x = movementTarget.x - 20
 	else:
-		newTargetPosition.x = movementTarget.x + 30
+		newTargetPosition.x = movementTarget.x + 20
 		
 #	newTargetPosition.y = movementTarget.y + 2
 	
@@ -92,17 +115,20 @@ func setMovementTarget(movementTarget: Vector2) -> void:
 #		$AnimationPlayer.play("swingRight")
 
 func attack() -> void:
-	var weaponAnimationInstance = weaponAnimation.instantiate()
-	weaponAnimationInstance.global_position = enemyTarget.global_position
-	if leftOf(global_position, enemyTarget.global_position):
-#		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x - 1
-		get_parent().add_child(weaponAnimationInstance)
-		weaponAnimationInstance.animationPlayer.play("SwingLeft") 
+	if closeToEnemy():
+		var weaponAnimationInstance = weaponAnimation.instantiate()
+		weaponAnimationInstance.global_position = enemyTarget.global_position
+		weaponAnimationInstance.position.y = weaponAnimationInstance.position.y - 5
+		if leftOf(global_position, enemyTarget.global_position):
+	#		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x - 1
+			get_parent().add_child(weaponAnimationInstance)
+			weaponAnimationInstance.animationPlayer.play("SwingLeft") 
+		else:
+	#		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x + 1
+			get_parent().add_child(weaponAnimationInstance)
+			weaponAnimationInstance.animationPlayer.play("SwingRight")
+	
 		enemyTarget.hurt(5)
-	else:
-#		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x + 1
-		get_parent().add_child(weaponAnimationInstance)
-		weaponAnimationInstance.animationPlayer.play("SwingRight")
 
 func findClosestEnemy() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemy"):
@@ -118,4 +144,5 @@ func setIdle() -> void: # move to inheritence later
 
 
 func _on_attack_cooldown_timeout() -> void:
-	attack()
+	if is_instance_valid(enemyTarget):
+		attack()

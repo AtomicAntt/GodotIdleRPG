@@ -810,7 +810,10 @@ layer_1/tile_data = PackedInt32Array(-2, 262152, 7, -1, 262152, 7, -65536, 65544
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PlayerEntity" parent="." instance=ExtResource("3_cmhxp")]
-position = Vector2(-63, -81)
+position = Vector2(115, 19)
 
 [node name="EnemyEntity" parent="." instance=ExtResource("4_dw0pn")]
 position = Vector2(-79, 1)
+
+[node name="EnemyEntity2" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(51, -2)
