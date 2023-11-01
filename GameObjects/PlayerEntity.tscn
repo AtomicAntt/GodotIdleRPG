@@ -401,7 +401,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Control"]
-z_index = 1
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -416,5 +415,10 @@ grow_vertical = 2
 theme = SubResource("Theme_faocc")
 text = "username"
 horizontal_alignment = 1
+
+[node name="HealthBarUnder" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -98,6 +98,7 @@ func attack() -> void:
 #		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x - 1
 		get_parent().add_child(weaponAnimationInstance)
 		weaponAnimationInstance.animationPlayer.play("SwingLeft") 
+		enemyTarget.hurt(5)
 	else:
 #		weaponAnimationInstance.global_position.x = weaponAnimationInstance.global_position.x + 1
 		get_parent().add_child(weaponAnimationInstance)
