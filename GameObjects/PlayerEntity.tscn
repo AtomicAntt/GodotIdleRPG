@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cb7i211hwvfqi"]
+[gd_scene load_steps=19 format=3 uid="uid://cb7i211hwvfqi"]
 
 [ext_resource type="Script" path="res://GameObjects/PlayerEntity.gd" id="1_sjrtq"]
 [ext_resource type="Texture2D" uid="uid://h2ave3dftngq" path="res://GameAssets/Players/mPlayer_ [human].png" id="2_tx40q"]
 [ext_resource type="PackedScene" uid="uid://ccdoeljkegslq" path="res://GameObjects/WeaponAnimation.tscn" id="3_uylsy"]
 [ext_resource type="FontFile" uid="uid://c44sujck78sa2" path="res://GameAssets/Fonts/Silkscreen-Regular.ttf" id="4_r25b6"]
+[ext_resource type="Texture2D" uid="uid://dyr0b6d2xgpva" path="res://GameAssets/UI/Bars/UnderV2.png" id="5_pkugy"]
+[ext_resource type="Texture2D" uid="uid://cs884xaaeidtn" path="res://GameAssets/UI/Bars/ProgressV2.png" id="6_8l6lu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsfuq"]
 size = Vector2(2, 2)
@@ -393,6 +395,7 @@ target_desired_distance = 5.0
 wait_time = 2.0
 
 [node name="Control" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -409,9 +412,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -23.0
-offset_top = -17.0
+offset_top = -19.0
 offset_right = 25.0
-offset_bottom = -3.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_faocc")
@@ -420,7 +423,13 @@ horizontal_alignment = 1
 
 [node name="HealthBarUnder" type="TextureProgressBar" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 33.0
+value = 100.0
+texture_under = ExtResource("5_pkugy")
+texture_progress = ExtResource("6_8l6lu")
+tint_progress = Color(0, 0.698039, 0, 1)
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

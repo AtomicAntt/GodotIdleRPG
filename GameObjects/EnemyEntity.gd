@@ -1,16 +1,24 @@
 extends CharacterBody2D
 
+@onready var healthBarUnder = $Control/HealthBarUnder
+@onready var healthBarOver = $Control/HealthBarOver
+
 enum States {IDLE, WANDER, ATTACKING, DEAD}
 var state: States
 
+var totalHealth: int = 20
 var health: int = 20
 
 func _ready() -> void:
 	$AnimationPlayer.play("idle")
 
 func hurt(damage: int) -> void:
-	print("health: " + str(health))
 	health -= damage
+	healthBarOver.value = (float(health) / float(totalHealth)) * 100.0
+	
+	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(healthBarUnder, "value", healthBarOver.value, 0.4)
+	
 	if health > 0:
 		$AnimationPlayer.play("hurt")
 	else:

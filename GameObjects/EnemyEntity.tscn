@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://btjkllsa5ypny"]
+[gd_scene load_steps=16 format=3 uid="uid://btjkllsa5ypny"]
 
 [ext_resource type="Script" path="res://GameObjects/EnemyEntity.gd" id="1_od1qw"]
 [ext_resource type="Texture2D" uid="uid://dvx0vxb3cybqi" path="res://GameAssets/Enemies/fungant_.png" id="2_nymbi"]
+[ext_resource type="FontFile" uid="uid://c44sujck78sa2" path="res://GameAssets/Fonts/Silkscreen-Regular.ttf" id="3_tsvqk"]
+[ext_resource type="Texture2D" uid="uid://dyr0b6d2xgpva" path="res://GameAssets/UI/Bars/UnderV2.png" id="4_f7jd8"]
+[ext_resource type="Texture2D" uid="uid://cs884xaaeidtn" path="res://GameAssets/UI/Bars/ProgressV2.png" id="5_uj2qu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bgv6"]
 size = Vector2(10, 3)
@@ -171,6 +174,10 @@ _data = {
 "spawn": SubResource("Animation_4k2lc")
 }
 
+[sub_resource type="Theme" id="Theme_1xcjr"]
+default_font = ExtResource("3_tsvqk")
+default_font_size = 8
+
 [node name="EnemyEntity" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_od1qw")
 
@@ -190,3 +197,51 @@ frame = 8
 libraries = {
 "": SubResource("AnimationLibrary_di55j")
 }
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -19.0
+offset_right = 25.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1xcjr")
+horizontal_alignment = 1
+
+[node name="HealthBarOver" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 33.0
+value = 100.0
+texture_progress = ExtResource("5_uj2qu")
+tint_progress = Color(0, 0.698039, 0, 1)
+
+[node name="HealthBarUnder" type="TextureProgressBar" parent="Control"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 33.0
+value = 100.0
+texture_under = ExtResource("4_f7jd8")
+texture_progress = ExtResource("5_uj2qu")
+tint_progress = Color(1, 0.152941, 0.109804, 1)
