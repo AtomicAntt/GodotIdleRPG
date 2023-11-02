@@ -9,20 +9,31 @@ var state: States
 var totalHealth: int = 20
 var health: int = 20
 
+# player attacking at
+var atLeft: bool = false
+var atRight: bool = false
+
 func _ready() -> void:
 	$AnimationPlayer.play("idle")
+	
+func isAvailable() -> bool:
+	if atLeft and atRight:
+		return false
+	return true
 
 func hurt(damage: int) -> void:
-	health -= damage
-	healthBarOver.value = (float(health) / float(totalHealth)) * 100.0
-	
-	var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(healthBarUnder, "value", healthBarOver.value, 0.4)
-	
-	if health > 0:
-		$AnimationPlayer.play("hurt")
-	else:
-		$AnimationPlayer.play("hurtDeath")
+	if not isDead():
+		health -= damage
+		healthBarOver.value = (float(health) / float(totalHealth)) * 100.0
+		
+		var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(healthBarUnder, "value", healthBarOver.value, 0.4)
+		
+		if health > 0:
+			$AnimationPlayer.play("hurt")
+		else:
+			state = States.DEAD
+			$AnimationPlayer.play("hurtDeath")
 
 func _physics_process(delta: float) -> void:
 #	$AnimationPlayer.play("idle")
@@ -42,7 +53,6 @@ func remove() -> void:
 
 func death() -> void: # called by hurtDeath animation from animationplayer
 	$AnimationPlayer.play("death")
-	state = States.DEAD
 
 func isDead() -> bool:
 	if state == States.DEAD:

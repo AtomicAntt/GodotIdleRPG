@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 				if navigationAgent.is_navigation_finished() and closeToEnemy():
 					attack() # attack initially right away
 					engageCombat() # Which will set state to combat
-					return
+					return # to prevent playing that "run" animation again
 				
 				$AnimationPlayer.play("run")
 				var currentAgentPosition: Vector2 = global_position
@@ -43,11 +43,13 @@ func _physics_process(delta: float) -> void:
 				velocity = newVelocity
 				move_and_slide()
 			else:
-				state = States.IDLE
+#				state = States.IDLE
+				setIdle()
 #				print("Enemy is not valid, returning to idle")
 		States.COMBAT:
 			if not is_instance_valid(enemyTarget):
-				state = States.IDLE
+#				state = States.IDLE
+				setIdle()
 				print("Enemy is not valid, returning to idle")
 				
 
@@ -91,13 +93,19 @@ func faceEnemy() -> void:
 #	await get_tree().physics_frame
 #	setMovementTarget()
 
-func setMovementTarget(movementTarget: Vector2) -> void:
+func setMovementTarget(movementTarget: Vector2, enemy: CharacterBody2D) -> void:
 	# To make sure the player is to the left or right of the enemy (because attacks would look weird otherwise)
 	var newTargetPosition: Vector2 = movementTarget
-	if global_position.x < movementTarget.x:
+	# if close to left w/ unoccupied left side OR have no choice but to go to the left because enemy is at the right..
+	if (global_position.x <= movementTarget.x and enemy.atLeft == false) or (enemy.atRight == true and enemy.atLeft == false):
+		enemy.atLeft = true
 		newTargetPosition.x = movementTarget.x - 20
-	else:
+		print("locking in the left side for " + str(enemy))
+	# if close to the right w/ unoccupied right OR have no choice but to go to the right because enemy is at the left
+	elif (global_position.x > movementTarget.x and enemy.atRight == false) or (enemy.atRight == false and enemy.atLeft == true):
+		enemy.atRight = true
 		newTargetPosition.x = movementTarget.x + 20
+		print("locking in the right side for " + str(enemy))
 		
 #	newTargetPosition.y = movementTarget.y + 2
 	
@@ -115,7 +123,7 @@ func setMovementTarget(movementTarget: Vector2) -> void:
 #		$AnimationPlayer.play("swingRight")
 
 func attack() -> void:
-	if closeToEnemy():
+	if closeToEnemy() and not enemyTarget.isDead():
 		var weaponAnimationInstance = weaponAnimation.instantiate()
 		weaponAnimationInstance.global_position = enemyTarget.global_position
 		weaponAnimationInstance.position.y = weaponAnimationInstance.position.y - 5
@@ -131,16 +139,26 @@ func attack() -> void:
 		enemyTarget.hurt(5)
 
 func findClosestEnemy() -> void:
-	for enemy in get_tree().get_nodes_in_group("enemy"):
-		if enemy.global_position.distance_squared_to(global_position) <= sightRange * sightRange:
-			enemyTarget = enemy
-			setMovementTarget(enemyTarget.global_position)
-			state = States.CHASE
+	var closestEnemy: CharacterBody2D = null
 	
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if enemy.global_position.distance_squared_to(global_position) <= sightRange * sightRange and enemy.isAvailable():
+			if closestEnemy != null:
+				if enemy.global_position.distance_to(global_position) < closestEnemy.global_position.distance_to(global_position):
+					closestEnemy = enemy
+			else:
+				closestEnemy = enemy
+	
+	if closestEnemy != null:
+		enemyTarget = closestEnemy
+		setMovementTarget(enemyTarget.global_position, enemyTarget)
+		state = States.CHASE
 
 func setIdle() -> void: # move to inheritence later
-	$AnimationPlayer.play("idle")
 	state = States.IDLE
+	$AttackCooldown.stop()
+	$AnimationPlayer.play("idle")
+	
 
 
 func _on_attack_cooldown_timeout() -> void:
