@@ -115,6 +115,9 @@ var suffixArray: Array
 var prefixDataFilePath: String = "res://GameAssets/jsonFiles/prefix.json"
 var prefixArray: Array
 
+var firstNamesDataFilePath: String = "res://GameAssets/jsonFiles/first-names.json"
+var firstNamesArray: Array
+
 var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -125,6 +128,7 @@ func _ready() -> void:
 	loadJsonFiles(nounsDataFilePath, nounsArray)
 	loadJsonFiles(suffixDataFilePath, suffixArray)
 	loadJsonFiles(prefixDataFilePath, prefixArray)
+	loadJsonFiles(firstNamesDataFilePath, firstNamesArray)
 	
 	print("I will now proceed to print 100 usernames:")
 	for i in range(100):
@@ -444,12 +448,37 @@ func repeat(words: Array):
 
 ## Select a random first name and last name.
 func name():
-	var firstNames = ["anthony", "mary", "john", "bob"]
+#	var firstNames = ["anthony", "mary", "john", "bob"]
+	var firstNames = firstNamesArray
 	var lastNames = ["doe", "adams", "lee", "white"]
 	var array = []
-	array.append(firstNames[rng.randi_range(0, firstNames.size() - 1)])
-	array.append(lastNames[rng.randi_range(0, lastNames.size() - 1)])
+	var firstName = firstNames[rng.randi_range(0, firstNames.size() - 1)]
+	var lastName = lastNames[rng.randi_range(0, lastNames.size() - 1)]
+	if rng.randi_range(0,1):
+		array.append(firstName)
+	else:
+		array.append(firstName[0])
+	if rng.randi_range(0,1):
+		var middleName = firstNames[rng.randi_range(0, firstNames.size() - 1)]
+		while middleName == firstName:
+			middleName = firstNames[rng.randi_range(0, firstNames.size() - 1)]
+		if rng.randi_range(0,1):
+			array.append(middleName)
+		else:
+			array.append(middleName[0])
+	if rng.randi_range(0,1):
+		array.append(lastName)
+	else:
+		array.append(lastName[0])
 	return array
+
+#func name():
+#	var firstNames = ["anthony", "mary", "john", "bob"]
+#	var lastNames = ["doe", "adams", "lee", "white"]
+#	var array = []
+#	array.append(firstNames[rng.randi_range(0, firstNames.size() - 1)])
+#	array.append(lastNames[rng.randi_range(0, lastNames.size() - 1)])
+#	return array
 
 func getRandomNoun() -> String:
 #	return nounsArray[rng.randi_range(0, nounsArray.size()-1)].to_lower()
