@@ -258,14 +258,13 @@ _data = {
 "SwingRight": SubResource("Animation_jcsxq")
 }
 
-[node name="Node2D" type="Marker2D"]
+[node name="WeaponAnimation" type="Marker2D"]
 script = ExtResource("2_5w203")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
 texture = ExtResource("1_wd48d")
-flip_h = true
 hframes = 4
 vframes = 4
 frame = 4

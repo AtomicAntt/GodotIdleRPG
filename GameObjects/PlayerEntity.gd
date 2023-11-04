@@ -136,7 +136,7 @@ func attack() -> void:
 			get_parent().add_child(weaponAnimationInstance)
 			weaponAnimationInstance.animationPlayer.play("SwingRight")
 	
-		enemyTarget.hurt(5)
+		enemyTarget.hurt(5, self)
 
 func findClosestEnemy() -> void:
 	var closestEnemy: CharacterBody2D = null

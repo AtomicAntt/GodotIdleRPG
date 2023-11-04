@@ -820,3 +820,27 @@ position = Vector2(71, 7)
 
 [node name="EnemyEntity2" parent="." instance=ExtResource("4_dw0pn")]
 position = Vector2(46, -30)
+
+[node name="PlayerEntity3" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(15, -108)
+
+[node name="EnemyEntity3" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(-71, -86)
+
+[node name="EnemyEntity4" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(-14, -64)
+
+[node name="EnemyEntity5" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(-14, 53)
+
+[node name="EnemyEntity6" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(-70, 45)
+
+[node name="EnemyEntity7" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(-68, -50)
+
+[node name="EnemyEntity8" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(44, -77)
+
+[node name="EnemyEntity9" parent="." instance=ExtResource("4_dw0pn")]
+position = Vector2(41, 32)
