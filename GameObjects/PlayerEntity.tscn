@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cb7i211hwvfqi"]
+[gd_scene load_steps=19 format=3 uid="uid://cb7i211hwvfqi"]
 
 [ext_resource type="Script" path="res://GameObjects/PlayerEntity.gd" id="1_sjrtq"]
 [ext_resource type="Texture2D" uid="uid://h2ave3dftngq" path="res://GameAssets/Players/mPlayer_ [human].png" id="2_tx40q"]
@@ -49,7 +49,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [72, 73, 74, 75]
@@ -117,11 +117,42 @@ length = 1.5
 resource_name = "swingRight"
 length = 1.5
 
+[sub_resource type="Animation" id="Animation_oqbno"]
+resource_name = "hurtDeath"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"death"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ybvo"]
 _data = {
 "RESET": SubResource("Animation_xv71p"),
 "death": SubResource("Animation_0v2dn"),
 "hurt": SubResource("Animation_4b4y5"),
+"hurtDeath": SubResource("Animation_oqbno"),
 "idle": SubResource("Animation_dkyt7"),
 "run": SubResource("Animation_2s0kt"),
 "spawn": SubResource("Animation_eu5wb"),
@@ -187,8 +218,18 @@ theme = SubResource("Theme_faocc")
 text = "username"
 horizontal_alignment = 1
 
-[node name="HealthBarUnder" type="TextureProgressBar" parent="Control"]
+[node name="HealthBarOver" type="TextureProgressBar" parent="Control"]
 layout_mode = 0
+offset_left = -8.0
+offset_top = -7.0
+offset_right = 32.0
+offset_bottom = 33.0
+value = 100.0
+texture_progress = ExtResource("6_8l6lu")
+tint_progress = Color(0, 0.698039, 0, 1)
+
+[node name="HealthBarUnder" type="TextureProgressBar" parent="Control"]
+show_behind_parent = true
 offset_left = -8.0
 offset_top = -7.0
 offset_right = 32.0
@@ -196,6 +237,6 @@ offset_bottom = 33.0
 value = 100.0
 texture_under = ExtResource("5_pkugy")
 texture_progress = ExtResource("6_8l6lu")
-tint_progress = Color(0, 0.698039, 0, 1)
+tint_progress = Color(1, 0.152941, 0.109804, 1)
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

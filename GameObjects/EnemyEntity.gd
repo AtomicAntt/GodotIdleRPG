@@ -50,6 +50,7 @@ func attack() -> void:
 		enemyAttackInstance.position.y -= 6
 		get_parent().add_child(enemyAttackInstance)
 		enemyAttackInstance.animationPlayer.play("attack")
+		playerTarget.hurt(20)
 	
 func facePlayer() -> void:
 	if not is_instance_valid(playerTarget):
@@ -81,7 +82,7 @@ func getSprite() -> Sprite2D:
 func remove() -> void:
 	queue_free()
 
-func death() -> void: # called by hurtDeath animation from animationplayer
+func death() -> void: # called by hurtDeath animation from animationplayer 
 	$AnimationPlayer.play("death")
 
 func isDead() -> bool:

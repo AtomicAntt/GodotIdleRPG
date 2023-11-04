@@ -3,12 +3,18 @@ extends CharacterBody2D
 enum States {IDLE, WANDER, CHASE, COMBAT, DEAD}
 var state: States
 
+var totalHealth: int = 100
+var health: int = 100
+
 var speed: float = 60.0
 var sightRange: float = 200.0
 var attackRange: float = 30.0
 var enemyTarget: CharacterBody2D
 
 @onready var navigationAgent: NavigationAgent2D = $NavigationAgent2D
+
+@onready var healthBarUnder = $Control/HealthBarUnder
+@onready var healthBarOver = $Control/HealthBarOver
 
 @onready var weaponAnimation := preload("res://GameObjects/WeaponAnimation.tscn")
 
@@ -47,11 +53,34 @@ func _physics_process(delta: float) -> void:
 				setIdle()
 #				print("Enemy is not valid, returning to idle")
 		States.COMBAT:
+			$AnimationPlayer.play("idle")
 			if not is_instance_valid(enemyTarget):
 #				state = States.IDLE
 				setIdle()
 				print("Enemy is not valid, returning to idle")
 				
+
+func hurt(damage: int) -> void:
+	if not isDead():
+		health -= damage
+		healthBarOver.value = (float(health) / float(totalHealth)) * 100.0
+		
+		var tween := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(healthBarUnder, "value", healthBarOver.value, 0.4)
+		
+		if health > 0:
+			$AnimationPlayer.play("hurt")
+		else:
+			state = States.DEAD
+			$AnimationPlayer.play("hurtDeath")
+
+func death() -> void: # called by hurtDeath animation from animationplayer 
+	$AnimationPlayer.play("death")
+
+func isDead() -> bool:
+	if state == States.DEAD:
+		return true
+	return false
 
 func engageCombat() -> void:
 	if is_instance_valid(enemyTarget):
@@ -68,6 +97,8 @@ func engageCombat() -> void:
 			enemyTarget.getSprite().flip_h = true
 	else:
 		state = States.IDLE
+
+
 
 func closeToEnemy() -> bool:
 	if is_instance_valid(enemyTarget):
@@ -162,5 +193,7 @@ func setIdle() -> void: # move to inheritence later
 
 
 func _on_attack_cooldown_timeout() -> void:
-	if is_instance_valid(enemyTarget):
+	if is_instance_valid(enemyTarget) and state == States.COMBAT:
 		attack()
+	else:
+		$AttackCooldown.stop()
