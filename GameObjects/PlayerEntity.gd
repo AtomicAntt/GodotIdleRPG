@@ -6,6 +6,10 @@ var state: States
 var totalHealth: int = 100
 var health: int = 100
 
+var currentLevel: int = 1
+var expRequired: int = 20
+var exp: int = 0
+
 var speed: float = 60.0
 var sightRange: float = 200.0
 var attackRange: float = 30.0
@@ -15,6 +19,10 @@ var enemyTarget: CharacterBody2D
 
 @onready var healthBarUnder = $Control/HealthBarUnder
 @onready var healthBarOver = $Control/HealthBarOver
+@onready var nameLabel = $Control/NameLabel
+@onready var levelLabel = $Control/LevelLabel
+
+@onready var main = get_tree().get_nodes_in_group("main")[0]
 
 @onready var weaponAnimation := preload("res://GameObjects/WeaponAnimation.tscn")
 
@@ -22,7 +30,7 @@ var enemyTarget: CharacterBody2D
 
 func _ready() -> void:
 	$AnimationPlayer.play("idle")
-	$Control/Label.text = usernameGenerator.returnRandomUsername()
+	nameLabel.text = usernameGenerator.returnRandomUsername()
 
 func _physics_process(delta: float) -> void:
 #	$AnimationPlayer.play("idle")
@@ -57,7 +65,7 @@ func _physics_process(delta: float) -> void:
 			if not is_instance_valid(enemyTarget):
 #				state = States.IDLE
 				setIdle()
-				print("Enemy is not valid, returning to idle")
+#				print("Enemy is not valid, returning to idle")
 				
 
 func hurt(damage: int) -> void:
@@ -81,12 +89,35 @@ func isDead() -> bool:
 	if state == States.DEAD:
 		return true
 	return false
+	
+func calculateexpRequiredForLevel(levelTo: int) -> int:
+	return 10 * pow((levelTo - 1), 2)+ 10 * (levelTo - 1)
+
+func giveExp(expAmount: int) -> void:
+	exp += expAmount
+	print("giving " + str(nameLabel.text) + " " + str(expAmount) + " exp, now " + str(nameLabel.text) + " has " + str(exp) + " exp")
+	main.addExperience(expAmount)
+	levelCheck()
+
+func levelCheck() -> void:
+	while exp >= expRequired:
+		exp -= expRequired
+		currentLevel += 1
+		main.addLevel()
+		expRequired = calculateexpRequiredForLevel(currentLevel + 1)
+		levelLabel.text = "level " + str(currentLevel)
+		print(nameLabel.text + " is now level " + str(currentLevel))
+		print("the experience required is " + str(expRequired) + " now")
+		
+	
+#	if exp >= expRequired: # To account for multiple level-ups
+#		levelCheck()
 
 func engageCombat() -> void:
 	if is_instance_valid(enemyTarget):
 		state = States.COMBAT
 		$AnimationPlayer.play("idle")
-		print("now engaging in combat with enemy!")
+#		print("now engaging in combat with enemy!")
 		
 		$AttackCooldown.start()
 		
@@ -131,12 +162,12 @@ func setMovementTarget(movementTarget: Vector2, enemy: CharacterBody2D) -> void:
 	if (global_position.x <= movementTarget.x and enemy.atLeft == false) or (enemy.atRight == true and enemy.atLeft == false):
 		enemy.atLeft = true
 		newTargetPosition.x = movementTarget.x - 20
-		print("locking in the left side for " + str(enemy))
+#		print("locking in the left side for " + str(enemy))
 	# if close to the right w/ unoccupied right OR have no choice but to go to the right because enemy is at the left
 	elif (global_position.x > movementTarget.x and enemy.atRight == false) or (enemy.atRight == false and enemy.atLeft == true):
 		enemy.atRight = true
 		newTargetPosition.x = movementTarget.x + 20
-		print("locking in the right side for " + str(enemy))
+#		print("locking in the right side for " + str(enemy))
 		
 #	newTargetPosition.y = movementTarget.y + 2
 	

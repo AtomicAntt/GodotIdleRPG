@@ -2,7 +2,14 @@ extends Control
 
 @onready var menu: Control = $Menu
 @onready var main2D: Node2D = $Main2D
+
 var levelInstance: Node2D
+
+@onready var playerExperienceLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerExperienceLabel
+@onready var playerLevelsLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerLevelsLabel
+
+var playerExperience: int = 0
+var playerLevels: int = 3
 
 func _ready() -> void:
 	loadLevel("World1")
@@ -19,3 +26,20 @@ func loadLevel(levelName: String) -> void:
 	if levelResource:
 		levelInstance = levelResource.instantiate()
 		main2D.add_child(levelInstance)
+
+func addLevel() -> void:
+	playerLevels += 1
+	updatePlayerLevels() # visually
+
+func updatePlayerLevels() -> void:
+	playerLevelsLabel.text = "PL: " + str(playerLevels)
+
+func addExperience(expAmount: int) -> void:
+	playerExperience += expAmount
+	updatePlayerExperience()
+
+func updatePlayerExperience() -> void:
+	playerExperienceLabel.text = "PX: " + str(playerExperience)
+
+
+

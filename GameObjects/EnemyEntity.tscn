@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://GameObjects/EnemyEntity.gd" id="1_od1qw"]
 [ext_resource type="Texture2D" uid="uid://dvx0vxb3cybqi" path="res://GameAssets/Enemies/fungant_.png" id="2_nymbi"]
-[ext_resource type="FontFile" uid="uid://c44sujck78sa2" path="res://GameAssets/Fonts/Silkscreen-Regular.ttf" id="3_tsvqk"]
+[ext_resource type="FontFile" uid="uid://1wjemhgfvl8t" path="res://GameAssets/Fonts/m5x7.ttf" id="3_1hkqc"]
 [ext_resource type="Texture2D" uid="uid://dyr0b6d2xgpva" path="res://GameAssets/UI/Bars/UnderV2.png" id="4_f7jd8"]
 [ext_resource type="Texture2D" uid="uid://cs884xaaeidtn" path="res://GameAssets/UI/Bars/ProgressV2.png" id="5_uj2qu"]
 
@@ -175,7 +175,7 @@ _data = {
 }
 
 [sub_resource type="Theme" id="Theme_1xcjr"]
-default_font = ExtResource("3_tsvqk")
+default_font = ExtResource("3_1hkqc")
 default_font_size = 8
 
 [node name="EnemyEntity" type="CharacterBody2D" groups=["enemy"]]

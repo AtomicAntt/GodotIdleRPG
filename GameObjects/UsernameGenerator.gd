@@ -141,13 +141,20 @@ func returnRandomUsername() -> String:
 	var nameBaseType: NameBaseTypes = selectRandomType(NameBaseChances)
 	var usernameArray: Array = returnNameBaseType(nameBaseType) 
 	var username: String # end result
+	
+	var nameModifiedType: NameModifierTypes
 	if nameBaseType != NameBaseTypes.BOT: # bots dont put frames or the alike
-		var nameModifiedType: NameModifierTypes = selectRandomType(NameModifierChances)
+		nameModifiedType= selectRandomType(NameModifierChances)
 		username = returnModified(nameModifiedType, usernameArray)
 	else:
 		username = "".join(PackedStringArray(usernameArray))
-	var nameFormatType: NameFormatTypes = selectRandomType(NameFormatChances)
-	username = returnFormatted(nameFormatType, username)
+	
+	# substitution always have lower case modifier
+	if nameModifiedType != NameModifierTypes.SUBSTITUTION:
+		var nameFormatType: NameFormatTypes = selectRandomType(NameFormatChances)
+		username = returnFormatted(nameFormatType, username)
+	else:
+		username = username.to_lower()
 
 	return username
 

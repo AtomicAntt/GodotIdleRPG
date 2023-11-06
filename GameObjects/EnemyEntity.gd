@@ -10,6 +10,7 @@ var state: States
 
 var totalHealth: int = 20
 var health: int = 20
+var expValue: int = 10
 
 # player attacking at
 var atLeft: bool = false
@@ -41,6 +42,7 @@ func hurt(damage: int, player: CharacterBody2D) -> void:
 		else:
 			state = States.DEAD
 			$AnimationPlayer.play("hurtDeath")
+			player.giveExp(expValue)
 
 
 func attack() -> void:
@@ -50,7 +52,7 @@ func attack() -> void:
 		enemyAttackInstance.position.y -= 6
 		get_parent().add_child(enemyAttackInstance)
 		enemyAttackInstance.animationPlayer.play("attack")
-		playerTarget.hurt(20)
+		playerTarget.hurt(5)
 	
 func facePlayer() -> void:
 	if not is_instance_valid(playerTarget):

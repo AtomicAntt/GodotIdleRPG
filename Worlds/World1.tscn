@@ -816,7 +816,7 @@ position = Vector2(115, 19)
 position = Vector2(-79, 1)
 
 [node name="PlayerEntity2" parent="." instance=ExtResource("3_cmhxp")]
-position = Vector2(71, 7)
+position = Vector2(70, -5)
 
 [node name="EnemyEntity2" parent="." instance=ExtResource("4_dw0pn")]
 position = Vector2(46, -30)

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf5qa6qow0u3b"]
+[gd_scene load_steps=5 format=3 uid="uid://cf5qa6qow0u3b"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_7s8yx"]
 [ext_resource type="PackedScene" uid="uid://caej3pqfnpk5q" path="res://GameObjects/UsernameGenerator.tscn" id="2_dud74"]
+[ext_resource type="FontFile" uid="uid://1wjemhgfvl8t" path="res://GameAssets/Fonts/m5x7.ttf" id="2_oyx6x"]
 
-[node name="Main" type="Control"]
+[sub_resource type="Theme" id="Theme_tpmhe"]
+default_font = ExtResource("2_oyx6x")
+
+[node name="Main" type="Control" groups=["main"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +17,42 @@ grow_vertical = 2
 script = ExtResource("1_7s8yx")
 
 [node name="Main2D" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Main2D"]
+
+[node name="Control" type="Control" parent="Main2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tpmhe")
+
+[node name="CheckButton" type="CheckButton" parent="Main2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -134.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "show usernames"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main2D/CanvasLayer/Control"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 45.0
+
+[node name="PlayerExperienceLabel" type="Label" parent="Main2D/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "PX: n/a"
+
+[node name="PlayerLevelsLabel" type="Label" parent="Main2D/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "PL: n/a"
 
 [node name="Menu" type="Control" parent="."]
 anchors_preset = 0
