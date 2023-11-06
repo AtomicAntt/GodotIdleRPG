@@ -48,14 +48,9 @@ func handleDrag(event: InputEventScreenDrag):
 		var zoomFactor = startDistance / currentDist
 		if canZoom:
 			zoom = startZoom / zoomFactor
-		zoom = clamp(zoom, 0.1, 10)
-	
-	elif touchPoints.size() == 2:
-		var touchPointPositions = touchPoints.values()
-		var currentDist = touchPointPositions[0].distance_to(touchPointPositions[1])
 		
-		var zoomFactor = startDistance / currentDist
-		if canZoom:
-			zoom = startZoom / zoomFactor
+		# max dist u can go away from the screen is 1
+		zoom.x = clamp(zoom.x, 1, 10)
+		zoom.y = clamp(zoom.y, 1, 10)
 		
 
