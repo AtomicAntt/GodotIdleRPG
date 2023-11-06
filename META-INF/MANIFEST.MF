@@ -1,0 +1,756 @@
+Manifest-Version: 1.0
+
+Name: AndroidManifest.xml
+SHA-256-Digest: eNmh8TF2Z2ihMsjiUyyNPCIAhfGQEQrH/Dh24p0+UZw=
+
+Name: assets/.godot/exported/133200997/export-2ddd04d543d5858e7f20c929
+ 9a8b5096-main.scn
+SHA-256-Digest: J6MNiPDSXfSqgELf1ZqAcAlOAXmsCHsGmRsmu87p0TQ=
+
+Name: assets/.godot/exported/133200997/export-3626e08cf9c57a51265ef486
+ 5e359448-World1.scn
+SHA-256-Digest: bMxDZNw7MpOt0UzT03UbYdhbFoTu4e3tqtBrfZjqbak=
+
+Name: assets/.godot/exported/133200997/export-6390b6c7158c0435e16507d3
+ 205d0038-WeaponAnimation.scn
+SHA-256-Digest: me1G01F38lfa+cUsFBC2O5TjC5NJ1fDDwSHL9R2PrhU=
+
+Name: assets/.godot/exported/133200997/export-787b10a472246d84f5c8118f
+ ece590bf-EnemyAttackAnimation.scn
+SHA-256-Digest: /jSvtxo5lY1txtO94pLo5D5Bz8rVrIMqpmRUcV9943U=
+
+Name: assets/.godot/exported/133200997/export-b56a20fdd6fae51b5260d4e9
+ 12a01ae3-PlayerEntity.scn
+SHA-256-Digest: gP81LIOIiB9jCjviTUSYJrR9upxb+D0D/NDs1CK/WgA=
+
+Name: assets/.godot/exported/133200997/export-bb4b07c9f00cb221abf93d84
+ 8aa0fdb4-UsernameGenerator.scn
+SHA-256-Digest: PQIBfJYasYLOpV8SJFXWVtehoUSoVNkggLO2q7EslJg=
+
+Name: assets/.godot/exported/133200997/export-d8f308f8edaa1bf2c9b05476
+ 59a8b02e-EnemyEntity.scn
+SHA-256-Digest: GsBM1Vyn+j1AIcuuE13E1PgLcHmbexwaXeRhRddPXYg=
+
+Name: assets/.godot/global_script_class_cache.cfg
+SHA-256-Digest: QMQpmfDwlQ89QyKtxFBOp7b/1wNPfB/pJ/cbbgdBybI=
+
+Name: assets/.godot/imported/000.png-93ed2c6fd9f1a8af2a6bc995c11c827c.
+ ctex
+SHA-256-Digest: bglFBEUNW18/108MgLZqISRA+5GxBAt4S5FQ7ZyAk80=
+
+Name: assets/.godot/imported/001.png-9fdef56fec94c96646d260fc74b0ab30.
+ ctex
+SHA-256-Digest: g3rTPnnhElDy4+jADmdBm4ZdCm/4bGpj6VaNpBcOlr8=
+
+Name: assets/.godot/imported/002.png-2b4103fba609a10f7ba7e229763d2993.
+ ctex
+SHA-256-Digest: HKZXE7fCBBonWWVqsKCPVi4dpEnLLd+w6gymU5RL3RM=
+
+Name: assets/.godot/imported/003.png-a1beebbc33e6c378bd9e40da6b005a18.
+ ctex
+SHA-256-Digest: HvQhsAeQH5afnLY3qJMOmcyycC/MfQURcVeQSrhaIfY=
+
+Name: assets/.godot/imported/004.png-adf210024e9eb94fe5737406481b7cc3.
+ ctex
+SHA-256-Digest: 8EatwXUcqKXQd08AC4E51Y86A+XLspyyX2023G8IDDE=
+
+Name: assets/.godot/imported/ProgressV2.png-b33e87f5eda180cf23a3e11fed
+ 1c7f9a.ctex
+SHA-256-Digest: zST79mhtHFyL7aIZD/TMAGnF+jY0d0B1KYCcT825QkY=
+
+Name: assets/.godot/imported/UnderV2.png-37a3fefdd37f2d11e9691f53c4866
+ d15.ctex
+SHA-256-Digest: Rn0l3lBSjuUkVWoUFIAn48EJzA6EHrwSLbjb8mQ0DSc=
+
+Name: assets/.godot/imported/astrologer1.png-07058aa70e91a735be8d331c9
+ 2f0058a.ctex
+SHA-256-Digest: 4a6LoYr4QJf8dp4Gb5WftTgcVmblfgHid1MnHArQFdE=
+
+Name: assets/.godot/imported/astrologer2.png-6225695ed7573f8d23487028b
+ afb1475.ctex
+SHA-256-Digest: 1i2z+w5BMNVUlFiDrDzPU7R8v1OoXe/xjkU/6j/aIb4=
+
+Name: assets/.godot/imported/astrologer3.png-e3cbf6e253052b54a840137a9
+ d7b3536.ctex
+SHA-256-Digest: KP2vxrmSfJcXIhXQz7yJ0LAXazTIzzXvyg/fvRWdl0U=
+
+Name: assets/.godot/imported/astrologer4.png-6c674ed272aa8fe1db40af6e7
+ d409bcb.ctex
+SHA-256-Digest: 6UsV4XYsSU2VQvH1AdLewY6sbpnDyNQ9Fr+H5PLpSbU=
+
+Name: assets/.godot/imported/black_hole.png-1f8d259dd1901cfe8fe22ff340
+ f760e3.ctex
+SHA-256-Digest: drZ4eGVccV4G9CSXeTNpOekI9bzrR7Z7zyzEf9Ub6OY=
+
+Name: assets/.godot/imported/blood_burst.png-8cd049e0dfe67a5f94edf6316
+ 32e9f34.ctex
+SHA-256-Digest: uQ+Umm2JRDpHm0ukuxU92CU8PFg8WY+3UKGyxF18lCs=
+
+Name: assets/.godot/imported/blood_cross.png-1ce1c663137687b3a588a988b
+ 5f92162.ctex
+SHA-256-Digest: LjDT3Mw2ypvmBphcDnA3rr99WlYvIyr8y5dclKKZgEY=
+
+Name: assets/.godot/imported/blood_scratch.png-3743ccacaf492d2804c089c
+ c9d833245.ctex
+SHA-256-Digest: t5dSQhZ3s6RLxVC0mxfDOBEacu45Jr2bHsbhVtlnzSo=
+
+Name: assets/.godot/imported/blood_stab.png-bf19c62e6b215a870fcae7a0fc
+ 144348.ctex
+SHA-256-Digest: vshk5/oE8v5/3pGOVy18FppsTtlKLAqvWd/APYP39eA=
+
+Name: assets/.godot/imported/blood_swish.png-63792128e37ff067588b27380
+ bb31d02.ctex
+SHA-256-Digest: OOTz/vyaPSyIPZFm0QCUdlb4ielXO8OgCZQUdp5vzZs=
+
+Name: assets/.godot/imported/blue_flame_burst.png-fc626a993909a3c86e8c
+ 8585c3ce2b00.ctex
+SHA-256-Digest: 0znSqbAet8GObnSw1H7k9gpFeVatBjZdyuWITrpkzOo=
+
+Name: assets/.godot/imported/blue_flame_spin.png-1a87570ce703776fdb37c
+ fd2c9e7502b.ctex
+SHA-256-Digest: 5QUtLTsx5KAPjnoASHPKagpI1go/Bwfo7F4K8S7Iqqk=
+
+Name: assets/.godot/imported/blue_splash.png-c48248f80c7a90fb03a377f66
+ fe44a9d.ctex
+SHA-256-Digest: rshOqBVR3YLX7usUhbY9hI7TWnaI0RaY6NdQbIuorpE=
+
+Name: assets/.godot/imported/cloud_swish.png-e733ba98d984e537e317f1ce3
+ 57cebb1.ctex
+SHA-256-Digest: pPkRSP1YkAa56lU4h1l9xBOj4jBvqNK5xLc+XxwfafE=
+
+Name: assets/.godot/imported/cosmic_eye.png-d7ff0ce5edbd0f26dcefa0d1fe
+ 28ab4c.ctex
+SHA-256-Digest: 0vrX4qjK8DpszTLaCb5JRu8NKPSgqRgRtY5ZQV0RCeE=
+
+Name: assets/.godot/imported/diamond_burst.png-36d106af884a8dfe5295c9b
+ 75a18bc0e.ctex
+SHA-256-Digest: YhHIvw+uA4pSa/D3Ou7yKrG2edRxtOBjt+iB7JdtU98=
+
+Name: assets/.godot/imported/elementalist1.png-95940b32efdbb27aa9f8718
+ db22e2494.ctex
+SHA-256-Digest: cOx17VCvuw7EPqRWPxbNPFlJ/R0gJmXpv7AfptmOFpA=
+
+Name: assets/.godot/imported/forest_.png-4b134c02a05e0cc2389b701445048
+ 797.ctex
+SHA-256-Digest: AW5S/vsSAXh9/lvuDLcB5rh0cPvkuXswKHvMQQaI3YE=
+
+Name: assets/.godot/imported/fungant_.png-507bbf9188a73aa7c6ab022326f9
+ b56b.ctex
+SHA-256-Digest: uJfCNq93HEMd28TMa8DXybcv4VvoYXiUAOyHDA8HrGo=
+
+Name: assets/.godot/imported/grass_swish.png-7f92cb5f6b852536811477792
+ 5dff63d.ctex
+SHA-256-Digest: wcgRB6httKLgiybGfLcqLvhHM7kAaajmIsgYuG3zBDM=
+
+Name: assets/.godot/imported/green_bubbles.png-cdb70b66572e3fde958d73f
+ 353a6f692.ctex
+SHA-256-Digest: M0C3gNYcceys4boQLtPINTqG/HB6Lp7tRUHWPSp6R68=
+
+Name: assets/.godot/imported/green_splash.png-7885922ecbad62964715a80a
+ e57e9020.ctex
+SHA-256-Digest: bz/0vGc432fSeGee2LudaCVl/QO5xQMyt6lBBsqDmSk=
+
+Name: assets/.godot/imported/ground_rise.png-e53d6270f3831bdceb88b1c3e
+ fa50b34.ctex
+SHA-256-Digest: OhGago2EkouGiDw09zXigyCGqXbJQ0dL2PRsQp4Ra7o=
+
+Name: assets/.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b
+ .ctex
+SHA-256-Digest: XF+ISGPZIzGQ8lQIaVgeTb+Y7EPVYxB5WYeDqNo0GLw=
+
+Name: assets/.godot/imported/lightning.png-30872f60441cda8c4cd98357eb3
+ a69fc.ctex
+SHA-256-Digest: uyVj9Qh9GmJfp7gCEpA6PYBFoQjiMSJH+7u7gwWdAJU=
+
+Name: assets/.godot/imported/m5x7.ttf-d84ce12fab9b270672c21b96c27409e3
+ .fontdata
+SHA-256-Digest: MrwWZiL/IuTeNAXQrBHO/aamOnQbN8kBymji7Eeaeq8=
+
+Name: assets/.godot/imported/mPlayer_ [human].png-26840d29e3d1b11fa2c1
+ 131a9dfa2123.ctex
+SHA-256-Digest: U+ur9hT/RvE7z4LoT4fyk+hvGe76HWpoCWdHk3hSq4Y=
+
+Name: assets/.godot/imported/mage.png-76e0ccfbe2be7d1571c6fef4d5559737
+ .ctex
+SHA-256-Digest: jSUf/8X3LsKZPkWbgAVascdkDXsXG/LebPy5F4AM1og=
+
+Name: assets/.godot/imported/magic_circle.png-5b3dc67202d5963b402a08c5
+ ecb9fbb0.ctex
+SHA-256-Digest: SvCnKov/ORPWm5p1nK1NqxK1986/zA9OXHsgZes9zsQ=
+
+Name: assets/.godot/imported/medic_heal.png-5871708e1eba92a3908971a779
+ 68f3f3.ctex
+SHA-256-Digest: 0iYY5wUV1D7r6sU58FYSi1Dj3Th+4K4GBjaXfkzlJCc=
+
+Name: assets/.godot/imported/melting_space.png-149b7a89b83ab137e3a7015
+ 26a691b86.ctex
+SHA-256-Digest: Kr5TQKXNX/eR0C1KE11AY/koQA8QmOdSMRyoEJV/SCY=
+
+Name: assets/.godot/imported/meteor_impact.png-5a87d0e9ff40a7b895ae48b
+ 8abf8f657.ctex
+SHA-256-Digest: lbUXz7Fl4x2uZPSwALLLWgKW2eI0y7Dw6jb5GBgA718=
+
+Name: assets/.godot/imported/orange_burst.png-5e31d7ee195c9bb4f2d635c2
+ 2924712b.ctex
+SHA-256-Digest: 5N5xjP4JxU4uLw4M3UBJ7LeetsNjX9YqzSsZF7sf2oU=
+
+Name: assets/.godot/imported/purple_slosh.png-39ac15706130dd622848e944
+ 2f090a65.ctex
+SHA-256-Digest: EW161i6jxfOEQohtEmNWT1pKKFVsuOfKx2xoenqkoMw=
+
+Name: assets/.godot/imported/red_explosion.png-3780338ce41c8ff62885b1f
+ 6b683ae3d.ctex
+SHA-256-Digest: R4JqcbsgrFePftMRCSiqt3Fnkpezc8ZHm0uJVucGplo=
+
+Name: assets/.godot/imported/resurrect.png-dc729eba21c397ec245bac18e49
+ 68e60.ctex
+SHA-256-Digest: cc6xQ6muZNjqIIo++RCjooaS97+FPSxll6XD23AKq/M=
+
+Name: assets/.godot/imported/rock_smash.png-5f53def0d1612043fa108436eb
+ c970f2.ctex
+SHA-256-Digest: Ty8E1zbPYFL/tIihR7m/tguP9cRvyljWRqVJN87N0u0=
+
+Name: assets/.godot/imported/rose_petals.png-5160ba1a84a0e621c02215b0b
+ d3ff601.ctex
+SHA-256-Digest: Zy9rzqRYgeKVI4lG5ZtJnHb1pF2+G0Pgk/VzsdJ0HMY=
+
+Name: assets/.godot/imported/shooting_stars.png-902942e9d7632b7eac1491
+ d181d7f4d2.ctex
+SHA-256-Digest: TlZ8OrKBrQLxQfqt+c6hzsrZtbLXI6l/ZgGnAZk/KLo=
+
+Name: assets/.godot/imported/small_fire.png-049d2e7badc283c2966af9db83
+ 0ab639.ctex
+SHA-256-Digest: HL3RdaKDXWS2FCDemPw8N8p9GBCm/qNwLyYoOQ/SUzQ=
+
+Name: assets/.godot/imported/sparkle_burst.png-17710cd15b5130dc4f77696
+ 66f09be5a.ctex
+SHA-256-Digest: CZo1JjLM/sDtl1cNBHFxX2s8rnZpwQnF1mBLq5u9eOs=
+
+Name: assets/.godot/imported/spores.png-a643adba364995644d26600bfb7241
+ 7b.ctex
+SHA-256-Digest: K+ivdZ8cDori3ble+qPBWrhTrqsmXYtkqq4l7pEAgnY=
+
+Name: assets/.godot/imported/star_sign.png-fed9b7e8b447a72c485463c41d1
+ ac05a.ctex
+SHA-256-Digest: uAhAvpD+kkOWifvM/kQlk931mLf14xIgE7Ib7rFAqKM=
+
+Name: assets/.godot/imported/stitches.png-3bd59f4a5d7455b2b56df38ad7b9
+ 780b.ctex
+SHA-256-Digest: 1pVPfK+7iXtqQbUkJbCtmRm+CZeZdzOKKSoKtJlHYI4=
+
+Name: assets/.godot/imported/sword_ [stone].png-201385cda5bb1f20aaef7b
+ dadcb88165.ctex
+SHA-256-Digest: iO6Rx6JzFrwsIi5ZWJh9s+Zl/9ozDrnQlszfcS2oCVU=
+
+Name: assets/.godot/imported/tornado.png-b86f488806c428afcfd9de048d73f
+ 591.ctex
+SHA-256-Digest: McRWXQFPsEw/GmojYitjttwyPQAYu5860OdpilsHNiQ=
+
+Name: assets/.godot/imported/water_.png-44fd45ac062fb0e34f704e0e82e4fe
+ ce.ctex
+SHA-256-Digest: AW5S/vsSAXh9/lvuDLcB5rh0cPvkuXswKHvMQQaI3YE=
+
+Name: assets/.godot/imported/water_burst.png-a31f47da9f82cdbd52694673f
+ 69a56ed.ctex
+SHA-256-Digest: +OAAjm+ppUn8rnqeGYz2gfEbt0a1fZ063dMP1GgNfT0=
+
+Name: assets/.godot/imported/water_swish.png-2656b5748f09209738ad84482
+ 43e0425.ctex
+SHA-256-Digest: Z6zc9ZH8zOGYE9M3tgWLkBhNVeDtnNU0exEcbqGygvI=
+
+Name: assets/.godot/imported/wave_spin.png-73331510a3b0b188e301a1669bb
+ 7f4bd.ctex
+SHA-256-Digest: w8sRxDGv4rKbRy0nswamRT2oUlqP9mYQaDlhWGG4NV8=
+
+Name: assets/.godot/uid_cache.bin
+SHA-256-Digest: o4yLyXP1arPqIV6nvCUixxTCe5N0IiAlY4A1h2xclFY=
+
+Name: assets/GameAssets/Enemies/fungant_.png.import
+SHA-256-Digest: JTZ1rIIYuzn6GIVjI6imfULeU3zAFiwiL0PUmQ0BfKA=
+
+Name: assets/GameAssets/EnemyAttacks/spores.png.import
+SHA-256-Digest: BarM/50NU3pTWiSUuKIbIfsD9mZrMCBZJbLqIFzDc90=
+
+Name: assets/GameAssets/Fonts/m5x7.ttf.import
+SHA-256-Digest: aZosXKO1KmJY38F/RBc28UsRBHYxeQz2kQT8OB0Y2uw=
+
+Name: assets/GameAssets/Players/healer pack 1/000.png.import
+SHA-256-Digest: 3fxj72bywGQ7bcn3nsyKTuwmzpqZX7nEIMxKierWq4g=
+
+Name: assets/GameAssets/Players/healer pack 1/001.png.import
+SHA-256-Digest: XCeV/76CAckzxrMHVmOzyseH0NKPkBW2ltGQmN2ZVZM=
+
+Name: assets/GameAssets/Players/healer pack 1/002.png.import
+SHA-256-Digest: xjU3knGjUDD398Aw+dZaBfmdTP+enfTiBZ45nkr8hAw=
+
+Name: assets/GameAssets/Players/healer pack 1/003.png.import
+SHA-256-Digest: aDmIocaud29opeSMo4un6HtAK4Dg2ZEhBn4oAT1ZmsI=
+
+Name: assets/GameAssets/Players/healer pack 1/004.png.import
+SHA-256-Digest: 6ZjaJuhFGlvHcsnJBCHLQ09ZBON08HWX74a08X6er3I=
+
+Name: assets/GameAssets/Players/mPlayer_ [human].png.import
+SHA-256-Digest: mSD6227WN6d4mdWlWrWuj9X6zOdqTJUjeIdrfuxB4+Q=
+
+Name: assets/GameAssets/Players/mage pack 1/astrologer1.png.import
+SHA-256-Digest: 35w9rzMjrGYlBf7uj3JhKL9ozgiuZo0sMGt4ucbEDbA=
+
+Name: assets/GameAssets/Players/mage pack 1/astrologer2.png.import
+SHA-256-Digest: rZBCbtOexY+FRWdSE/DE/yiXSXSwP1TOPIPt+LcpFKE=
+
+Name: assets/GameAssets/Players/mage pack 1/astrologer3.png.import
+SHA-256-Digest: o+Bl8MOuEjSwB7O7cs2GBhnRXX/ChOIVPR9iiXkIlBg=
+
+Name: assets/GameAssets/Players/mage pack 1/astrologer4.png.import
+SHA-256-Digest: wtQgnSKArIuQOXw9LhjPABdr/IA05thM5vKAwtrumck=
+
+Name: assets/GameAssets/Players/mage pack 1/elementalist1.png.import
+SHA-256-Digest: ZjvATowiSO2dr7oBUcGc6CZQ6/55+9r3q67M30Fa8p0=
+
+Name: assets/GameAssets/Players/mage pack 1/mage.png.import
+SHA-256-Digest: HYid91rz8OQXQzNotqxtqAYRmKZInMUhrHeqdh+zvsc=
+
+Name: assets/GameAssets/Tilesets/forest_.png.import
+SHA-256-Digest: d/NF7GC3wQgy1FjMH7kVB122upTQ4MO05Ya+qI9yEPY=
+
+Name: assets/GameAssets/Tilesets/water_.png.import
+SHA-256-Digest: +KnNXjpm6bNJCItnErUdj15kGDi8MmB4IEEfl8j6Kks=
+
+Name: assets/GameAssets/UI/Bars/ProgressV2.png.import
+SHA-256-Digest: HwUSNtW6AMkLo4V4hT6gfXgxG9IDaPAzbbj84xHI/gg=
+
+Name: assets/GameAssets/UI/Bars/UnderV2.png.import
+SHA-256-Digest: ksWF3NiRUU+EdCtw1mskHVLbrdu8N2G4O41fywxvJik=
+
+Name: assets/GameAssets/Weapons/sword_ [stone].png.import
+SHA-256-Digest: NDX6qKby0jguB1xSG4GCHoI7Ikz8S8TUsI/p8/oXwjE=
+
+Name: assets/GameAssets/attack anims/astral attacks/black_hole.png.imp
+ ort
+SHA-256-Digest: L2eEYl8J56AdBjljnhCB/R1kxNhVCrXRFqM7aE2rvWA=
+
+Name: assets/GameAssets/attack anims/astral attacks/cosmic_eye.png.imp
+ ort
+SHA-256-Digest: /ubf66JTluXckJIpBFUtvxfgbEaMfh7aXnVfXMC5/M0=
+
+Name: assets/GameAssets/attack anims/astral attacks/melting_space.png.
+ import
+SHA-256-Digest: zKmNmLLn2vNzpOezgfq93TZszQxrLXL/6DgHth8uHXE=
+
+Name: assets/GameAssets/attack anims/astral attacks/meteor_impact.png.
+ import
+SHA-256-Digest: kq3sc1ughMPfRwYN+KKr0KR1CB2RrGX08R4KBdln3po=
+
+Name: assets/GameAssets/attack anims/astral attacks/shooting_stars.png
+ .import
+SHA-256-Digest: b9fofXWBpJNfmMtzmmPCTk5oKukm4Kv+3w0F16NHhFA=
+
+Name: assets/GameAssets/attack anims/blood attacks/blood_burst.png.imp
+ ort
+SHA-256-Digest: j1CuYb/l668hARqcKYBex9rTPoT5EqzMgMw5QJrqjBk=
+
+Name: assets/GameAssets/attack anims/blood attacks/blood_cross.png.imp
+ ort
+SHA-256-Digest: fvgTaaAM6gblqdPTB764D7AcbYEBzEiko33KjqOaLj0=
+
+Name: assets/GameAssets/attack anims/blood attacks/blood_scratch.png.i
+ mport
+SHA-256-Digest: maGbD5AnIBoifQcPOJwfW5eMrM2gHrA5AE4LM8vO5mc=
+
+Name: assets/GameAssets/attack anims/blood attacks/blood_stab.png.impo
+ rt
+SHA-256-Digest: +lSEF88wej7IC96yQOA+8FjCgR38c/lieybOP34gy9M=
+
+Name: assets/GameAssets/attack anims/blood attacks/blood_swish.png.imp
+ ort
+SHA-256-Digest: 3V+0XPxeuhevGIXtxvZvR8CsaptJwJqlZyOLzBpC1LM=
+
+Name: assets/GameAssets/attack anims/elemental attacks/blue_flame_burs
+ t.png.import
+SHA-256-Digest: ptECwTeN6M1F7ULWEbS0S82+Gcwxt+IZ/Qku1TJAryM=
+
+Name: assets/GameAssets/attack anims/elemental attacks/blue_flame_spin
+ .png.import
+SHA-256-Digest: Rt1XhO6zhr7+B68kq8/En4SmzBv5DbMYU99axdA+0hU=
+
+Name: assets/GameAssets/attack anims/elemental attacks/cloud_swish.png
+ .import
+SHA-256-Digest: Nzapau6uzGeAgU+iQn7BrXaCh9TmgjEJ+tDGl2AWmzE=
+
+Name: assets/GameAssets/attack anims/elemental attacks/grass_swish.png
+ .import
+SHA-256-Digest: yPs0uaPtkeaOWwduhaxzhAUtBTT1epa2zse7FI1oqkY=
+
+Name: assets/GameAssets/attack anims/elemental attacks/ground_rise.png
+ .import
+SHA-256-Digest: CWyMe8hXAd48O/gkfU0LOaVjorcH490KBxvnaOel6XY=
+
+Name: assets/GameAssets/attack anims/elemental attacks/lightning.png.i
+ mport
+SHA-256-Digest: eyiuSvN1FzSTcQ2UBInPhWd3DXGNoDoYHEIYNrpkpic=
+
+Name: assets/GameAssets/attack anims/elemental attacks/red_explosion.p
+ ng.import
+SHA-256-Digest: jlBhY1sFFYM3y41WL4aKlMIhf/eJeMxaaWpEW22AYHI=
+
+Name: assets/GameAssets/attack anims/elemental attacks/rock_smash.png.
+ import
+SHA-256-Digest: R/IpKmsV3RHXIadEIU1iLQ/zkzhwN10dOhym1lmtDu8=
+
+Name: assets/GameAssets/attack anims/elemental attacks/small_fire.png.
+ import
+SHA-256-Digest: RB06sZCbSAA0jHzX8qZvBBCFTvf2xJVDpYTGWBmRsg8=
+
+Name: assets/GameAssets/attack anims/elemental attacks/tornado.png.imp
+ ort
+SHA-256-Digest: QiSu2sGy4vqzVT3U0b30soEJ9WSVWpTKUHJSdmiEgaY=
+
+Name: assets/GameAssets/attack anims/elemental attacks/water_burst.png
+ .import
+SHA-256-Digest: kWuwZNOKLPYQOjEA6rjcdLAulu2vTq8aZiY3yPpAQeU=
+
+Name: assets/GameAssets/attack anims/elemental attacks/water_swish.png
+ .import
+SHA-256-Digest: EV5ij2kHMbxOh5B44Qidsp2PdC5XAosBYfGsoVXJLGI=
+
+Name: assets/GameAssets/attack anims/elemental attacks/wave_spin.png.i
+ mport
+SHA-256-Digest: Rjv5xHVNUweSLaxIg7C2p0lKUCX3JY5p75wXLhTIakg=
+
+Name: assets/GameAssets/attack anims/heal animations/green_bubbles.png
+ .import
+SHA-256-Digest: zEWwcAn++/bfwXk4782c3CzzIvOefIyBaEj0BKbCBEw=
+
+Name: assets/GameAssets/attack anims/heal animations/medic_heal.png.im
+ port
+SHA-256-Digest: /2b1rYNPKS+HQRBAssJpjQWAMqVoNLAyeLyaDwy8H2I=
+
+Name: assets/GameAssets/attack anims/heal animations/resurrect.png.imp
+ ort
+SHA-256-Digest: jnO0Yw7fsZOmvbx9hD1UbLxMI3HO/xdWi7GYzomEQZ8=
+
+Name: assets/GameAssets/attack anims/heal animations/rose_petals.png.i
+ mport
+SHA-256-Digest: aC+jjhySYWqgYhi88qLn9Thebc1P5n+vhqFuIR0iNh0=
+
+Name: assets/GameAssets/attack anims/heal animations/stitches.png.impo
+ rt
+SHA-256-Digest: a+RAWqNDGr4L7pb44j2u7OmaWf09fRbP2YaTKB6uciI=
+
+Name: assets/GameAssets/attack anims/magic attacks/diamond_burst.png.i
+ mport
+SHA-256-Digest: OuTRH/NsDmRMkh6psReR2i/rvrPig8KYhUCpBVp9OHM=
+
+Name: assets/GameAssets/attack anims/magic attacks/magic_circle.png.im
+ port
+SHA-256-Digest: +IOW6QvU5EFtYlzdb7TZyCUbO2wnpCkpb02pigfno9g=
+
+Name: assets/GameAssets/attack anims/magic attacks/sparkle_burst.png.i
+ mport
+SHA-256-Digest: IFBPLTGUt+fj+MwqxR3Rx0rA54X4la/67D5JBi/K/ak=
+
+Name: assets/GameAssets/attack anims/magic attacks/star_sign.png.impor
+ t
+SHA-256-Digest: TbPs4z1ovaDtlYzlGxTVSOptn+s271nZUzsl//kFHsw=
+
+Name: assets/GameAssets/attack anims/poison attacks/blue_splash.png.im
+ port
+SHA-256-Digest: WLVLOLgew3LFw6MkXchjiv2UQlDd+erUSqaXSES0qmE=
+
+Name: assets/GameAssets/attack anims/poison attacks/green_splash.png.i
+ mport
+SHA-256-Digest: GOM+hbmWN+fQmRbOYyQVI4FOD4aP0c9WMlOqi2PUeKU=
+
+Name: assets/GameAssets/attack anims/poison attacks/orange_burst.png.i
+ mport
+SHA-256-Digest: ag5n6JnB4ixOX14dq3YkaMgx/GcDHEWEAZkIyIUmjFg=
+
+Name: assets/GameAssets/attack anims/poison attacks/purple_slosh.png.i
+ mport
+SHA-256-Digest: w+wapo0h5Ck22NZ8MwW/912J734bhixgovHqhhGLzOE=
+
+Name: assets/GameAssets/jsonFiles/adjectives.json
+SHA-256-Digest: Weebf05zYevRBpQrI8CJ5D3wQ47REl2aD/rxc6C2tiE=
+
+Name: assets/GameAssets/jsonFiles/first-names.json
+SHA-256-Digest: 2zG+bHNdLlpTGT8LA/7T4/7bwSuc23924LGdOS6RhtM=
+
+Name: assets/GameAssets/jsonFiles/nouns.json
+SHA-256-Digest: cZ+QqXfwYtj8CpqPO9s6m0gsHgfoCFQz6ZmMsM73OwQ=
+
+Name: assets/GameAssets/jsonFiles/prefix.json
+SHA-256-Digest: lB/lS1dXdaix8fCspLlu5SlrJXrU09dPrCQqNri14ms=
+
+Name: assets/GameAssets/jsonFiles/suffix.json
+SHA-256-Digest: glujK+KtOpr4NZai59nxVIDnfEMTzWjKjdmtUsuyAAI=
+
+Name: assets/GameObjects/EnemyAttackAnimation.tscn.remap
+SHA-256-Digest: r57szLYWAGVezZOZPwDCd0K2zvVQi1PgzLuGSUCmCes=
+
+Name: assets/GameObjects/EnemyEntity.gd
+SHA-256-Digest: TTM/Ky7JkuWJgv1HGMvdufjKx8AgoPYvL3if6Undqd8=
+
+Name: assets/GameObjects/EnemyEntity.tscn.remap
+SHA-256-Digest: s7ofDk/JNMIXzfJacar2wweqguxQunHJ5c5+0PrLY9Q=
+
+Name: assets/GameObjects/PlayerEntity.gd
+SHA-256-Digest: UCO/7wfWeua8Wmh16bNtcWHJXILfU3knMiGACx1sB7E=
+
+Name: assets/GameObjects/PlayerEntity.tscn.remap
+SHA-256-Digest: kD3g8NIdt6Q1g8+lQ12j+IYMXgC4obuggDTptNpZfvM=
+
+Name: assets/GameObjects/UsernameGenerator.gd
+SHA-256-Digest: jMIPduaC/eGO6SFW5vUUa9e5omjFpugt03VWH4TQIqs=
+
+Name: assets/GameObjects/UsernameGenerator.tscn.remap
+SHA-256-Digest: jdrKykC82uCiqaIwE+Hdz4+GfwLxP8YnW9kVdoA/UIY=
+
+Name: assets/GameObjects/WeaponAnimation.gd
+SHA-256-Digest: QiZhyIFIsF3jH6IhQIJtGjP6t+SVTCzbA/h/jU67xCg=
+
+Name: assets/GameObjects/WeaponAnimation.tscn.remap
+SHA-256-Digest: ST+7gPSXiDpFmxCwa7+gyEcAT4OVYnXgT79Er1o83Fc=
+
+Name: assets/Scenes/main.gd
+SHA-256-Digest: GoPfhi/aeTuT5m+KJNq8Mi8W2WvteMeOTJhr/yW8ePM=
+
+Name: assets/Scenes/main.tscn.remap
+SHA-256-Digest: pCh7qmMw5VLOnQLp2sAmTPSdzzdttTZhHYDWbaulV4I=
+
+Name: assets/Worlds/World1.tscn.remap
+SHA-256-Digest: AThw4HfdY8o7NM44DFCkbDUmQzqO8aZnca1rOmUSJn4=
+
+Name: assets/_cl_
+SHA-256-Digest: Dq+XQ8AE0nG55wyitPH0N19f7mv6/WdW4BWftb7mUEA=
+
+Name: assets/icon.svg
+SHA-256-Digest: qa7+upx0rC10BQA7aqRfswgjBNxV3O5ztOx64ogjvaI=
+
+Name: assets/icon.svg.import
+SHA-256-Digest: WvPPufvpUk4sy9ekXVWvw4+Grib0oi34xBYRSVxK+4s=
+
+Name: assets/project.binary
+SHA-256-Digest: ws4SdhBN41tJx8OEIYhF+PYNU9YkQk6lc9bRJhMwjDI=
+
+Name: classes.dex
+SHA-256-Digest: xsNusf6C4M7X9h+/DLs0Ort6cmDDd1vOHWTpAAk22C4=
+
+Name: classes2.dex
+SHA-256-Digest: Nen/8DZji6E7BF4he/4WNvNwowoCkyMx6vEcfrgJycY=
+
+Name: classes3.dex
+SHA-256-Digest: Z03M5va19QUMisuM3XSgkqCdnu2Bg3juDbU1jIdTU3g=
+
+Name: classes4.dex
+SHA-256-Digest: 4lxhpFFZuh+4ko7gTXK4yW9xVI/gdtgIYEoOBRkSnrY=
+
+Name: kotlin/annotation/annotation.kotlin_builtins
+SHA-256-Digest: 98k+cGfKErqbPZTG5UDkwjy2/djJr/cEtVPKumUPw1c=
+
+Name: kotlin/collections/collections.kotlin_builtins
+SHA-256-Digest: U5uFwkA/bvBjgWGtmd97ESVkEulBEzXtLqOTGj79fHY=
+
+Name: kotlin/coroutines/coroutines.kotlin_builtins
+SHA-256-Digest: WabWMrip9duibyponDhl4ZU1HffDwIqhZp/g35+euIM=
+
+Name: kotlin/internal/internal.kotlin_builtins
+SHA-256-Digest: DDrUFnIknBLnN97vwYS9n9uXDdLxEwJDy+cOx1zIleY=
+
+Name: kotlin/kotlin.kotlin_builtins
+SHA-256-Digest: 9J/OIwngx9divFWgDkG5c/xibLNLyvTq9fmTwnc/VBA=
+
+Name: kotlin/ranges/ranges.kotlin_builtins
+SHA-256-Digest: M1GCyseFH4A5FsPHsXHR+WJ/VUZSj7PHxOCrD4ufzVM=
+
+Name: kotlin/reflect/reflect.kotlin_builtins
+SHA-256-Digest: CfYev4QzIIHgKT80irDvPxg18jpRcRoNbU73/U7Iudc=
+
+Name: lib/arm64-v8a/libc++_shared.so
+SHA-256-Digest: QUR2AxRtnSyItwoFPspPR6SNgBjBJW7VrClMzRPoE5Y=
+
+Name: lib/arm64-v8a/libgodot_android.so
+SHA-256-Digest: 5ahvgO3sOlkjQhXc3XjB75YpEQaF5XJrvAowMNtEfms=
+
+Name: res/anim-v21/fragment_fast_out_extra_slow_in.xml
+SHA-256-Digest: I2mH6G9DBPQCAwkhrZOzHoryzGmfPlTv1iKPr1LEqnY=
+
+Name: res/animator/fragment_close_enter.xml
+SHA-256-Digest: Lhzd+ictL1Uk1rpGSe1FWXkB3iuPKSOMSsSZzuiaF7Y=
+
+Name: res/animator/fragment_close_exit.xml
+SHA-256-Digest: Ynbc7tbsjVu5qyUG4eHRzVM6QDjHOn+d+kMEuqyJBjk=
+
+Name: res/animator/fragment_fade_enter.xml
+SHA-256-Digest: isX93eV3hRl/zFmhQNWFv+7W58tPs8LRhrU2JKeK6nE=
+
+Name: res/animator/fragment_fade_exit.xml
+SHA-256-Digest: vFXkqWrrfUTH6tmdFnZWJA1bH7dtUdaygIMWTL4MTvc=
+
+Name: res/animator/fragment_open_enter.xml
+SHA-256-Digest: xhyFKA+nZnsakdok0+nsQxNIKD+NZ4xKb4kwM4IY5Yc=
+
+Name: res/animator/fragment_open_exit.xml
+SHA-256-Digest: ZXRIL9NtyvsAP6kDluqbqL+JbtapUWrt6Pl4Dm2HHK0=
+
+Name: res/drawable-hdpi-v4/notification_bg_low_normal.9.png
+SHA-256-Digest: IfC1UoC+ELGHzv+O3vSlpwR2g+bp/PR95BCqODn0EJQ=
+
+Name: res/drawable-hdpi-v4/notification_bg_low_pressed.9.png
+SHA-256-Digest: Qq7gsDiD6U315UM0ijl9EwLBuCIYlYcag7gYmfWpZHs=
+
+Name: res/drawable-hdpi-v4/notification_bg_normal.9.png
+SHA-256-Digest: DGMox7JCBXCn7DizvrO6yaKdiVrBq3I5MVq6cmZBhZM=
+
+Name: res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png
+SHA-256-Digest: GLMo2AF+Z31arT29ZrrjVrXKyXjG8GcJOOpkjlHQ62Y=
+
+Name: res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png
+SHA-256-Digest: hDDsAD4APz8roveNSP0VDiVAdmflMOguh6fUhBwP1nY=
+
+Name: res/drawable-mdpi-v4/notification_bg_low_normal.9.png
+SHA-256-Digest: L3+9oLpuU+mkfi/A4k4yxEfGE6WAjC1ihdxlHoOgetc=
+
+Name: res/drawable-mdpi-v4/notification_bg_low_pressed.9.png
+SHA-256-Digest: 4Xdh7SgO3ZPXFBvVBLcPnp4VqGUiiNnmMzv0zpZO+EQ=
+
+Name: res/drawable-mdpi-v4/notification_bg_normal.9.png
+SHA-256-Digest: qGdqF5OsgxD/sSmGIy32bfCS0pwkKu7cK3NVbAENONw=
+
+Name: res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png
+SHA-256-Digest: mcFNaFW4viltWAF9N1G43IScR7bR2Aq2FP+QdQgORhs=
+
+Name: res/drawable-mdpi-v4/notify_panel_notification_icon_bg.png
+SHA-256-Digest: DXc+YsdWQiMTJihGx4flj2fg7ofkXhrplCAC6BbEy54=
+
+Name: res/drawable-nodpi-v4/splash.png
+SHA-256-Digest: 4MiZ37NBecVH1NG0NWkcyabJqmZCGtyVNXn31SCFWyA=
+
+Name: res/drawable-nodpi-v4/splash_bg_color.png
+SHA-256-Digest: M9CKA8Yv8UoQNRit6JxBKZZzy9i3Zm3q2tDLvH9Vffg=
+
+Name: res/drawable-v21/notification_action_background.xml
+SHA-256-Digest: QkSX7LEWBGb7Bu+aiaZPQ06ceGw/rfBbxBsVkwGqcJE=
+
+Name: res/drawable-xhdpi-v4/notification_bg_low_normal.9.png
+SHA-256-Digest: PgmvohxFNywDVZjAF8j7QFptZ45suE3IV1gcs7QOSC0=
+
+Name: res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png
+SHA-256-Digest: IDQyIvn3ndVlw6IkhJTUUucIIKwcQ3Fzw4ut1F+WKv0=
+
+Name: res/drawable-xhdpi-v4/notification_bg_normal.9.png
+SHA-256-Digest: VZv3g9dlwCM46XlSvcnGaJx/+ZCQuMmBM2kRjaiwgPA=
+
+Name: res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png
+SHA-256-Digest: 0nr0NRAcpMvsDIQL0waHkYzTnrg6qxSHQghVYjpFmYs=
+
+Name: res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png
+SHA-256-Digest: tE7to016Upwv5VcZ6wmPopcHyqkdGN4Gp6d11ua8+XM=
+
+Name: res/drawable/notification_bg.xml
+SHA-256-Digest: Z09OulAd/9VIYCo9YgyZia2Ogz5hGQYrzUkFatrSr1w=
+
+Name: res/drawable/notification_bg_low.xml
+SHA-256-Digest: 1SRO8ua9iJfjIjIhI0wRN8goVrxQy9HJVnhlpu5ZK8o=
+
+Name: res/drawable/notification_icon_background.xml
+SHA-256-Digest: uRjzYyQzZuSW0BUS+T1+fKa4zHWi3YeBBx9qKlHUL4U=
+
+Name: res/drawable/notification_tile_bg.xml
+SHA-256-Digest: Bzmi2DJ8zQobWnxZUvntaL9cUOOGpC1xxFWK2X4tX3A=
+
+Name: res/drawable/splash_drawable.xml
+SHA-256-Digest: 9ZP+qTXVYG99NZvCv+cIidQEUPUz2xll5jo/ku5EyXA=
+
+Name: res/layout-v21/notification_action.xml
+SHA-256-Digest: nr7fnpRpSpKW2t+JL6+bZxU9w8IZZxk0ao/EWRJ1W84=
+
+Name: res/layout-v21/notification_action_tombstone.xml
+SHA-256-Digest: CjQBq21fcFA8AhJgRQNMZ1+iGAqtLkMgbaWNKxcLZdI=
+
+Name: res/layout-v21/notification_template_custom_big.xml
+SHA-256-Digest: Mb4AGyvfIftV7MOJbXpTZsJTiJ0ow/LQ8HMFBp1RkN4=
+
+Name: res/layout-v21/notification_template_icon_group.xml
+SHA-256-Digest: 1ZOhmcHZ43RY9HsxvuYXNHAzceltn+0gfNP+CyaHyhk=
+
+Name: res/layout/custom_dialog.xml
+SHA-256-Digest: 6v4sXbHsRpH8kGI3uu/4QRcqBwWy4In4lch1AV8vy74=
+
+Name: res/layout/downloading_expansion.xml
+SHA-256-Digest: wY4gf66nAiYoYaQA2ZGXWK6/jNIZfvOT//hlkO1sLUs=
+
+Name: res/layout/godot_app_layout.xml
+SHA-256-Digest: HNIIw+c5Uskypt4GpFwONdtff3mh0yUP2V7TkMHUBfA=
+
+Name: res/layout/notification_template_part_chronometer.xml
+SHA-256-Digest: IG0Bn/ZY9dl7OqkhSR0u2I2HQtSkxOup0LUyQk6/Nfo=
+
+Name: res/layout/notification_template_part_time.xml
+SHA-256-Digest: FfNVeR8VQw/O0JvDgaEIknQu3B2h4QgqRI8eYsy65wk=
+
+Name: res/layout/status_bar_ongoing_event_progress_bar.xml
+SHA-256-Digest: tU5QUER+AwLLipMAJwFI2Oe2FIgro41JMiv3AJozmqc=
+
+Name: res/mipmap-anydpi-v26/icon.xml
+SHA-256-Digest: LCaUBrrp/XB//DLY8a+CM8k1LxI5w86SoLkDFGzQVE4=
+
+Name: res/mipmap-hdpi-v4/icon.png
+SHA-256-Digest: pnxOhjKxk0PdCtmFNrek6awxybVJDTFju14d8ykNmnk=
+
+Name: res/mipmap-hdpi-v4/icon_background.png
+SHA-256-Digest: geazM2w0NMXvHP7iIbDVxq/DyW+zrp4mR2FpPFsQ8Go=
+
+Name: res/mipmap-hdpi-v4/icon_foreground.png
+SHA-256-Digest: niNPEZoV5tCshdnrGIZjb1n4a2+rsRhdhRg/n+QbpvQ=
+
+Name: res/mipmap-mdpi-v4/icon.png
+SHA-256-Digest: x/9yb0NZGQ7J4BqKIoV+GoGfHXLvK50dahX8dWwyhBs=
+
+Name: res/mipmap-mdpi-v4/icon_background.png
+SHA-256-Digest: mRPlB5eMWXnXRJhfPsFnyTtc86ORMwBstK5cfp/Whn8=
+
+Name: res/mipmap-mdpi-v4/icon_foreground.png
+SHA-256-Digest: TTxwmCuzXAxYi1fJI4xHFfl4Q4/e46PScfdQ60+CAcc=
+
+Name: res/mipmap-xhdpi-v4/icon.png
+SHA-256-Digest: 6rw+TawWWrThuwXjPMvQd6V1V2ZMmshYi/ChIk0C11M=
+
+Name: res/mipmap-xhdpi-v4/icon_background.png
+SHA-256-Digest: xN/Jw7csvGAGzir5wKH9CDlpnOwTy8EQ9nnA1qDDVTk=
+
+Name: res/mipmap-xhdpi-v4/icon_foreground.png
+SHA-256-Digest: T/M+3M+dyldI8TgKoELRSL6HafE/5wIUjcTD4gF1g34=
+
+Name: res/mipmap-xxhdpi-v4/icon.png
+SHA-256-Digest: yHS7SzpqO0IwsYptYGAm6oV9jlK6hFjjD48nEq6zcZ8=
+
+Name: res/mipmap-xxhdpi-v4/icon_background.png
+SHA-256-Digest: oCpA8BcJlxM5zBkX83ueqbrdx6RrC4M8tZ5MWbQUxuM=
+
+Name: res/mipmap-xxhdpi-v4/icon_foreground.png
+SHA-256-Digest: YKMfyIzUvM88C8FdreTAIIcK/6j2CTM4WZpDepqsF6Y=
+
+Name: res/mipmap-xxxhdpi-v4/icon.png
+SHA-256-Digest: Oc4NY/OCRoyEjuhSRp+kN7kLTq+wdK49m6NxIc0C6Kw=
+
+Name: res/mipmap-xxxhdpi-v4/icon_background.png
+SHA-256-Digest: 1Q5EDa4E/GMdreKnjdnv62zIYOFMm/OXkQfNg63LYxE=
+
+Name: res/mipmap-xxxhdpi-v4/icon_foreground.png
+SHA-256-Digest: pejw8Pt8jLmjlTnUXyyVLteod0i3XQVAiCxkMFmSgxc=
+
+Name: res/mipmap/icon.png
+SHA-256-Digest: Oc4NY/OCRoyEjuhSRp+kN7kLTq+wdK49m6NxIc0C6Kw=
+
+Name: res/mipmap/icon_background.png
+SHA-256-Digest: mRPlB5eMWXnXRJhfPsFnyTtc86ORMwBstK5cfp/Whn8=
+
+Name: res/mipmap/icon_foreground.png
+SHA-256-Digest: pejw8Pt8jLmjlTnUXyyVLteod0i3XQVAiCxkMFmSgxc=
+
+Name: res/xml/godot_provider_paths.xml
+SHA-256-Digest: 3T2UgnXkDt6l3AlUOl/wdXuZzZkv/QvNyPXevm9przU=
+
+Name: resources.arsc
+SHA-256-Digest: 6HSAXZNrlAkJsljtJgx+PWtM2RbXc+cYdVeFX0ogwMY=
+
