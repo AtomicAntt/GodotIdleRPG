@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnjicqhnb0xc3"]
+[gd_scene load_steps=10 format=3 uid="uid://dnjicqhnb0xc3"]
 
 [ext_resource type="Texture2D" uid="uid://b4vap8k1qvman" path="res://GameAssets/Tilesets/forest_.png" id="1_3eqr3"]
 [ext_resource type="Texture2D" uid="uid://bdpcq8lxw6ybi" path="res://GameAssets/Tilesets/water_.png" id="2_3c0yo"]
 [ext_resource type="PackedScene" uid="uid://cb7i211hwvfqi" path="res://GameObjects/PlayerEntity.tscn" id="3_cmhxp"]
+[ext_resource type="Script" path="res://Worlds/TouchCameraController.gd" id="3_mpyhr"]
 [ext_resource type="PackedScene" uid="uid://btjkllsa5ypny" path="res://GameObjects/EnemyEntity.tscn" id="4_dw0pn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jqutc"]
@@ -808,6 +809,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(-2, 262152, 7, -1, 262152, 7, -65536, 65544, 6, 0, 327688, 6, 65535, 131080, 5, 65534, 131080, 5, -65538, 131080, 7, -65537, 131080, 7, -131072, 327688, 5, -3, 196616, 6, 65533, 262152, 6, -65539, 262152, 5)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_mpyhr")
 
 [node name="PlayerEntity" parent="." instance=ExtResource("3_cmhxp")]
 position = Vector2(115, 19)
