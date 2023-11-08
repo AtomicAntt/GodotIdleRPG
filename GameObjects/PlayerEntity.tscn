@@ -186,6 +186,7 @@ libraries = {
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
+debug_enabled = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0

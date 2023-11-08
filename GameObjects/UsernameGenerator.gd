@@ -130,9 +130,9 @@ func _ready() -> void:
 	loadJsonFiles(prefixDataFilePath, prefixArray)
 	loadJsonFiles(firstNamesDataFilePath, firstNamesArray)
 	
-	print("I will now proceed to print 100 usernames:")
-	for i in range(100):
-		print(str(i) + ":" + returnRandomUsername())
+#	print("I will now proceed to print 100 usernames:")
+#	for i in range(100):
+#		print(str(i) + ":" + returnRandomUsername())
 #	pass
 
 # most important function that the game may call to give a player the username
