@@ -7,11 +7,13 @@ extends Node2D
 var validEnemyLocations: Array # Array of vector2
 
 var groundTerrainSet: int = 0
+var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	# Reason for this function: Need to remove navigation from tiles where obstacles like water is present.
 	replaceGroundFromObstacles()
 	recordValidEnemyPositions()
+	
 
 func replaceGroundFromObstacles() -> void:
 	var groundSourceID: int = 1
@@ -48,7 +50,10 @@ func recordValidEnemyPositions() -> void:
 		var notPathTile: bool = getCell(vector.x, vector.y, getLayerIDByName("Path")) == 0
 		
 		if hasEightNeighbors and notObstacleTile and notPathTile:
-			validEnemyLocations.append(vector)
-			var enemyInstance: CharacterBody2D = EnemyEntity.instantiate()
-			enemyInstance.global_position = tileMap.map_to_local(vector)
-			add_child(enemyInstance)
+			validEnemyLocations.append(tileMap.map_to_local(vector))
+
+func spawnEnemyAtRandomLocation() -> void:
+	var randomLocation: Vector2 = validEnemyLocations[rng.randi_range(0, validEnemyLocations.size()-1)]
+	var enemyInstance: CharacterBody2D = EnemyEntity.instantiate()
+	enemyInstance.global_position = randomLocation
+	add_child(enemyInstance)

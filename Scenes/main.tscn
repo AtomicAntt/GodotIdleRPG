@@ -62,7 +62,7 @@ grow_vertical = 0
 
 [node name="Button" type="Button" parent="Main2D/CanvasLayer/Control/BoxContainer"]
 layout_mode = 2
-text = "upgrade a"
+text = "spawn enemy"
 
 [node name="Menu" type="Control" parent="."]
 anchors_preset = 0
@@ -70,3 +70,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="UsernameGenerator" parent="." groups=["usernameGenerator"] instance=ExtResource("2_dud74")]
+
+[connection signal="pressed" from="Main2D/CanvasLayer/Control/BoxContainer/Button" to="." method="_on_button_pressed"]

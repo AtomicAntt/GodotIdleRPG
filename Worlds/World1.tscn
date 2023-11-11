@@ -1187,7 +1187,7 @@ sources/3 = SubResource("TileSetAtlasSource_pwmex")
 sources/0 = SubResource("TileSetAtlasSource_ecxuf")
 pattern_0 = SubResource("TileMapPattern_8b6gq")
 
-[node name="World1" type="Node2D"]
+[node name="World1" type="Node2D" groups=["world"]]
 script = ExtResource("1_drukt")
 
 [node name="TileMap" type="TileMap" parent="."]

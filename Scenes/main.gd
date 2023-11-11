@@ -42,4 +42,6 @@ func updatePlayerExperience() -> void:
 	playerExperienceLabel.text = "PX: " + str(playerExperience)
 
 
-
+func _on_button_pressed() -> void:
+	var world = get_tree().get_nodes_in_group("world")[0]
+	world.spawnEnemyAtRandomLocation()
