@@ -1,6 +1,9 @@
 extends Node2D
 
 @onready var tileMap: TileMap = $TileMap
+
+@onready var EnemyEntity := preload("res://GameObjects/EnemyEntity.tscn")
+
 var validEnemyLocations: Array # Array of vector2
 
 var groundTerrainSet: int = 0
@@ -8,8 +11,7 @@ var groundTerrainSet: int = 0
 func _ready() -> void:
 	# Reason for this function: Need to remove navigation from tiles where obstacles like water is present.
 	replaceGroundFromObstacles()
-	
-#	removeNonSurroundedGround()
+	recordValidEnemyPositions()
 
 func replaceGroundFromObstacles() -> void:
 	var groundSourceID: int = 1
@@ -31,31 +33,22 @@ func getCell(x, y, layerID) -> int:
 	
 # maximum of 8 neighbors and mininum of 0
 func checkNeighbors(x: int, y: int, layerID: int) -> int:
-#	var left = grid[x-1][y-1] + grid[x-1][y] + grid[x-1][y+1]
 	var left = getCell(x-1, y-1, layerID) + getCell(x-1, y, layerID) + getCell(x-1, y+1, layerID)
-#	var topAndBottom = grid[x][y+1] + grid[x][y-1]
 	var topAndBottom = getCell(x, y+1, layerID) + getCell(x, y-1, layerID)
-#	var right = grid[x+1][y-1] + grid[x+1][y] + grid[x+1][y+1]
 	var right = getCell(x+1, y-1, layerID) + getCell(x+1, y, layerID) + getCell(x+1, y+1, layerID)
+	
 	return left + topAndBottom + right
 
-# must have 8 neighbors
 func recordValidEnemyPositions() -> void:
-	var groundID = getLayerIDByName("Ground")
-	var tilesToRemove: Array = [] # array of vectors
-	
+	var groundID: int = getLayerIDByName("Ground")
 	
 	for vector in tileMap.get_used_cells(groundID):
-		if checkNeighbors(vector.x, vector.y, groundID) != 8:
-			tilesToRemove.append(vector)
-	
-	# Reason for separation: dont want cells to be removed and to use that as future neighboring checks
-	for vector in tilesToRemove:
-		tileMap.set_cell(groundID, vector, -1)
-	
-
-func checkIfCellPosContainWater(cellPos: Vector2i) -> bool:
-	for waterPos in tileMap.get_used_cells(getLayerIDByName("Water")):
-		if waterPos == cellPos:
-			return true
-	return false
+		var hasEightNeighbors: bool = checkNeighbors(vector.x, vector.y, groundID) == 8
+		var notObstacleTile: bool = getCell(vector.x, vector.y, getLayerIDByName("Obstacle")) == 0
+		var notPathTile: bool = getCell(vector.x, vector.y, getLayerIDByName("Path")) == 0
+		
+		if hasEightNeighbors and notObstacleTile and notPathTile:
+			validEnemyLocations.append(vector)
+			var enemyInstance: CharacterBody2D = EnemyEntity.instantiate()
+			enemyInstance.global_position = tileMap.map_to_local(vector)
+			add_child(enemyInstance)

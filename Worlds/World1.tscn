@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnjicqhnb0xc3"]
+[gd_scene load_steps=15 format=3 uid="uid://dnjicqhnb0xc3"]
 
 [ext_resource type="Texture2D" uid="uid://b4vap8k1qvman" path="res://GameAssets/Tilesets/forest_.png" id="1_3eqr3"]
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_drukt"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://5k3rbk5gii32" path="res://GameAssets/Tilesets/forestPath_.png" id="2_luw0l"]
 [ext_resource type="PackedScene" uid="uid://cb7i211hwvfqi" path="res://GameObjects/PlayerEntity.tscn" id="3_cmhxp"]
 [ext_resource type="Script" path="res://Worlds/TouchCameraController.gd" id="3_mpyhr"]
-[ext_resource type="PackedScene" uid="uid://btjkllsa5ypny" path="res://GameObjects/EnemyEntity.tscn" id="4_dw0pn"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_8b6gq"]
 tile_data = PackedInt32Array(0, 458752, 7, 65536, 458752, 8)
@@ -1225,35 +1224,8 @@ script = ExtResource("3_mpyhr")
 [node name="PlayerEntity" parent="." instance=ExtResource("3_cmhxp")]
 position = Vector2(115, 19)
 
-[node name="EnemyEntity" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-147, -5)
-
 [node name="PlayerEntity2" parent="." instance=ExtResource("3_cmhxp")]
 position = Vector2(23, -61)
 
-[node name="EnemyEntity2" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-59, 5)
-
 [node name="PlayerEntity3" parent="." instance=ExtResource("3_cmhxp")]
 position = Vector2(-25, -120)
-
-[node name="EnemyEntity3" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-46, -90)
-
-[node name="EnemyEntity4" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-82, -130)
-
-[node name="EnemyEntity5" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-20, 73)
-
-[node name="EnemyEntity6" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-122, 31)
-
-[node name="EnemyEntity7" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-53, 9)
-
-[node name="EnemyEntity8" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(44, -77)
-
-[node name="EnemyEntity9" parent="." instance=ExtResource("4_dw0pn")]
-position = Vector2(-168, -27)
