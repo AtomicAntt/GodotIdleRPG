@@ -1,18 +1,16 @@
 extends Node2D
 
 @onready var tileMap: TileMap = $TileMap
-var validEnemyLocations: Array
+var validEnemyLocations: Array # Array of vector2
 
 var groundTerrainSet: int = 0
 
 func _ready() -> void:
+	# Reason for this function: Need to remove navigation from tiles where obstacles like water is present.
 	replaceGroundFromObstacles()
-	removeNonSurroundedGround()
+	
+#	removeNonSurroundedGround()
 
-func recordValidEnemyPositions() -> void:
-	for cellPos in tileMap.get_used_cells_by_id(getLayerIDByName("Ground")):
-		pass
-		
 func replaceGroundFromObstacles() -> void:
 	var groundSourceID: int = 1
 	var groundAtlasCoordinate: Vector2i = Vector2i(2, 3)
@@ -42,7 +40,7 @@ func checkNeighbors(x: int, y: int, layerID: int) -> int:
 	return left + topAndBottom + right
 
 # must have 8 neighbors
-func removeNonSurroundedGround() -> void:
+func recordValidEnemyPositions() -> void:
 	var groundID = getLayerIDByName("Ground")
 	var tilesToRemove: Array = [] # array of vectors
 	
@@ -55,3 +53,9 @@ func removeNonSurroundedGround() -> void:
 	for vector in tilesToRemove:
 		tileMap.set_cell(groundID, vector, -1)
 	
+
+func checkIfCellPosContainWater(cellPos: Vector2i) -> bool:
+	for waterPos in tileMap.get_used_cells(getLayerIDByName("Water")):
+		if waterPos == cellPos:
+			return true
+	return false
