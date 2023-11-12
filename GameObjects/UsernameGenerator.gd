@@ -130,9 +130,9 @@ func _ready() -> void:
 	loadJsonFiles(prefixDataFilePath, prefixArray)
 	loadJsonFiles(firstNamesDataFilePath, firstNamesArray)
 	
-#	print("I will now proceed to print 100 usernames:")
-#	for i in range(100):
-#		print(str(i) + ":" + returnRandomUsername())
+	print("I will now proceed to print 1000 usernames:")
+	for i in range(1000):
+		print(str(i) + ":" + returnRandomUsername())
 #	pass
 
 # most important function that the game may call to give a player the username
@@ -350,7 +350,8 @@ func number(array : Array):
 func suffix(array : Array):
 	rng.randomize()
 	# decide suffix
-	var suffixTypes = ["chan", "senpai", "god", "owo", "uwu", "0w0", "fanboy", "fangirl", "lover", "enjoyer", "gamer"]
+#	var suffixTypes = ["chan", "senpai", "god", "owo", "uwu", "0w0", "fanboy", "fangirl", "lover", "enjoyer", "gamer"]
+	var suffixTypes = suffixArray
 	var suffix = suffixTypes[rng.randi_range(0, suffixTypes.size() - 1)]
 	array.append(suffix)
 	return array
@@ -359,7 +360,8 @@ func suffix(array : Array):
 func prefix(array : Array):
 	rng.randomize()
 	# decide prefix
-	var prefixTypes = ["master", "mr", "mister", "madame", "mommy", "miss", "ms"]
+#	var prefixTypes = ["master", "mr", "mister", "madame", "mommy", "miss", "ms"]
+	var prefixTypes = prefixArray
 	var prefix = prefixTypes[rng.randi_range(0, prefixTypes.size() - 1)]
 	array.insert(0, prefix)
 	return array
