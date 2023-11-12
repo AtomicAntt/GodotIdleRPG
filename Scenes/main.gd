@@ -11,6 +11,9 @@ var levelInstance: Node2D
 var playerExperience: int = 0
 var playerLevels: int = 3
 
+var maxSpawnLimit: int = 5
+var upgradeCost: int = 1
+
 func _ready() -> void:
 	loadLevel("World1")
 
@@ -37,14 +40,34 @@ func updatePlayerLevels() -> void:
 func addExperience(expAmount: int) -> void:
 	playerExperience += expAmount
 	updatePlayerExperience()
+	updateUpgradeAvailability()
 
 func updatePlayerExperience() -> void:
 	playerExperienceLabel.text = "PX: " + str(playerExperience)
 
+func updateUpgradeAvailability() -> void:
+	if playerExperience >= upgradeCost:
+		$Main2D/CanvasLayer/Control/BoxContainer/Button.disabled = false
+	else:
+		$Main2D/CanvasLayer/Control/BoxContainer/Button.disabled = true
+
 func _on_button_pressed() -> void:
-	var world = get_tree().get_nodes_in_group("world")[0]
-	world.spawnEnemyAtRandomLocation()
+	print($SpawnEnemy.wait_time)
+	if $SpawnEnemy.wait_time > 0.1 and playerExperience >= upgradeCost:
+		$SpawnEnemy.stop()
+		playerExperience -= upgradeCost
+		updatePlayerExperience()
+		upgradeCost += upgradeCost
+		$SpawnEnemy.wait_time -= 0.1
+		$Main2D/CanvasLayer/Control/BoxContainer/Button.text = "upgrade enemy spawner\ncost: " + str(upgradeCost) + " PX\nspawn time: " + str($SpawnEnemy.wait_time) + "s"
+		$SpawnEnemy.start()
+		
+		updateUpgradeAvailability()
+	
+	
 
 func _on_spawn_enemy_timeout():
-	var world = get_tree().get_nodes_in_group("world")[0]
-	world.spawnEnemyAtRandomLocation()
+	var enemyCount = get_tree().get_nodes_in_group("enemy").size()
+	if enemyCount < maxSpawnLimit:
+		var world = get_tree().get_nodes_in_group("world")[0]
+		world.spawnEnemyAtRandomLocation()

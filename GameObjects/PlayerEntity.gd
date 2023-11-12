@@ -94,7 +94,7 @@ func calculateexpRequiredForLevel(levelTo: int) -> int:
 
 func giveExp(expAmount: int) -> void:
 	exp += expAmount
-	print("giving " + str(nameLabel.text) + " " + str(expAmount) + " exp, now " + str(nameLabel.text) + " has " + str(exp) + " exp")
+#	print("giving " + str(nameLabel.text) + " " + str(expAmount) + " exp, now " + str(nameLabel.text) + " has " + str(exp) + " exp")
 	main.addExperience(expAmount)
 	levelCheck()
 
@@ -105,8 +105,8 @@ func levelCheck() -> void:
 		main.addLevel()
 		expRequired = calculateexpRequiredForLevel(currentLevel + 1)
 		levelLabel.text = "level " + str(currentLevel)
-		print(nameLabel.text + " is now level " + str(currentLevel))
-		print("the experience required is " + str(expRequired) + " now")
+#		print(nameLabel.text + " is now level " + str(currentLevel))
+#		print("the experience required is " + str(expRequired) + " now")
 		
 	
 #	if exp >= expRequired: # To account for multiple level-ups

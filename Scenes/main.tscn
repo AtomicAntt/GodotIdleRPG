@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf5qa6qow0u3b"]
+[gd_scene load_steps=10 format=3 uid="uid://cf5qa6qow0u3b"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_7s8yx"]
 [ext_resource type="PackedScene" uid="uid://caej3pqfnpk5q" path="res://GameObjects/UsernameGenerator.tscn" id="2_dud74"]
@@ -6,6 +6,54 @@
 
 [sub_resource type="Theme" id="Theme_tpmhe"]
 default_font = ExtResource("2_oyx6x")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsr2r"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.772549, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cstv"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sges3"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcne2"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.501961, 0, 1)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_81sn4"]
+Button/styles/disabled = SubResource("StyleBoxFlat_dsr2r")
+Button/styles/hover = SubResource("StyleBoxFlat_1cstv")
+Button/styles/normal = SubResource("StyleBoxFlat_sges3")
+Button/styles/pressed = SubResource("StyleBoxFlat_tcne2")
 
 [node name="Main" type="Control" groups=["main"]]
 layout_mode = 3
@@ -59,10 +107,15 @@ offset_right = 19.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_81sn4")
 
 [node name="Button" type="Button" parent="Main2D/CanvasLayer/Control/BoxContainer"]
 layout_mode = 2
-text = "spawn enemy"
+focus_mode = 0
+disabled = true
+text = "upgrade enemy spawner
+cost: 1 PX
+spawn time: 2s"
 
 [node name="Menu" type="Control" parent="."]
 anchors_preset = 0
@@ -72,6 +125,7 @@ offset_bottom = 40.0
 [node name="UsernameGenerator" parent="." groups=["usernameGenerator"] instance=ExtResource("2_dud74")]
 
 [node name="SpawnEnemy" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [connection signal="pressed" from="Main2D/CanvasLayer/Control/BoxContainer/Button" to="." method="_on_button_pressed"]
