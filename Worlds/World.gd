@@ -11,11 +11,11 @@ var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	# Reason for this function: Need to remove navigation from tiles where obstacles like water is present.
-	replaceGroundFromObstacles()
+	replaceGroundAtObstacles()
 	recordValidEnemyPositions()
 	
 
-func replaceGroundFromObstacles() -> void:
+func replaceGroundAtObstacles() -> void:
 	var groundSourceID: int = 1
 	var groundAtlasCoordinate: Vector2i = Vector2i(2, 3)
 	for cellPos in tileMap.get_used_cells_by_id(getLayerIDByName("Obstacle")):

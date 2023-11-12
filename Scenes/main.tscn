@@ -71,4 +71,8 @@ offset_bottom = 40.0
 
 [node name="UsernameGenerator" parent="." groups=["usernameGenerator"] instance=ExtResource("2_dud74")]
 
+[node name="SpawnEnemy" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="Main2D/CanvasLayer/Control/BoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="SpawnEnemy" to="." method="_on_spawn_enemy_timeout"]

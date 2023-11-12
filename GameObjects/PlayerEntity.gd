@@ -61,7 +61,6 @@ func _physics_process(delta: float) -> void:
 				setIdle()
 #				print("Enemy is not valid, returning to idle")
 		States.COMBAT:
-			$AnimationPlayer.play("idle")
 			if not is_instance_valid(enemyTarget):
 #				state = States.IDLE
 				setIdle()
@@ -220,8 +219,10 @@ func setIdle() -> void: # move to inheritence later
 	state = States.IDLE
 	$AttackCooldown.stop()
 	$AnimationPlayer.play("idle")
-	
 
+# called by hurt animation after its played but it doesnt always mean going back to idle state
+func playIdle() -> void:
+	$AnimationPlayer.play("idle")
 
 func _on_attack_cooldown_timeout() -> void:
 	if is_instance_valid(enemyTarget) and state == States.COMBAT:

@@ -54,6 +54,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [72, 73, 74, 75]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"playIdle"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_oqbno"]
 resource_name = "hurtDeath"
@@ -186,7 +200,6 @@ libraries = {
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
-debug_enabled = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0
