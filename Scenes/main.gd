@@ -17,6 +17,9 @@ var upgradeCost: int = 1
 func _ready() -> void:
 	loadLevel("World1")
 
+func _physics_process(delta) -> void:
+	$Main2D/CanvasLayer/Control/BoxContainer/Label.text = str("%.1f" % $SpawnEnemy.time_left) + "s"
+
 func unloadLevel() -> void:
 	if is_instance_valid(levelInstance):
 		levelInstance.queue_free()
@@ -54,13 +57,13 @@ func updateUpgradeAvailability() -> void:
 func _on_button_pressed() -> void:
 	print($SpawnEnemy.wait_time)
 	if $SpawnEnemy.wait_time > 0.1 and playerExperience >= upgradeCost:
-		$SpawnEnemy.stop()
+#		$SpawnEnemy.stop()
 		playerExperience -= upgradeCost
 		updatePlayerExperience()
 		upgradeCost += upgradeCost
-		$SpawnEnemy.wait_time -= 0.1
-		$Main2D/CanvasLayer/Control/BoxContainer/Button.text = "upgrade enemy spawner\ncost: " + str(upgradeCost) + " PX\nspawn time: " + str($SpawnEnemy.wait_time) + "s"
-		$SpawnEnemy.start()
+		$SpawnEnemy.wait_time /= 1.2
+		$Main2D/CanvasLayer/Control/BoxContainer/Button.text = "upgrade enemy spawner\ncost: " + str(upgradeCost) + " PX\nspawn time: " + str("%.1f" % $SpawnEnemy.wait_time) + "s"
+#		$SpawnEnemy.start()
 		
 		updateUpgradeAvailability()
 	

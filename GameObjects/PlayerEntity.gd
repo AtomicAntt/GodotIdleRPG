@@ -6,6 +6,8 @@ var state: States
 var totalHealth: int = 100
 var health: int = 100
 
+var damage: int = 10
+
 var currentLevel: int = 1
 var expRequired: int = 20
 var exp: int = 0
@@ -197,7 +199,7 @@ func attack() -> void:
 			get_parent().add_child(weaponAnimationInstance)
 			weaponAnimationInstance.animationPlayer.play("SwingRight")
 	
-		enemyTarget.hurt(5, self)
+		enemyTarget.hurt(damage, self)
 
 func findClosestEnemy() -> void:
 	var closestEnemy: CharacterBody2D = null
