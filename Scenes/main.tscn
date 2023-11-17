@@ -111,9 +111,14 @@ theme = SubResource("Theme_81sn4")
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="Main2D/CanvasLayer/Control/BoxContainer"]
+[node name="TimeSpawn" type="Label" parent="Main2D/CanvasLayer/Control/BoxContainer"]
 layout_mode = 2
 text = "0.00s"
+horizontal_alignment = 1
+
+[node name="NumMonsters" type="Label" parent="Main2D/CanvasLayer/Control/BoxContainer"]
+layout_mode = 2
+text = "0/20 Enemies"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Main2D/CanvasLayer/Control/BoxContainer"]
@@ -132,7 +137,7 @@ offset_bottom = 40.0
 [node name="UsernameGenerator" parent="." groups=["usernameGenerator"] instance=ExtResource("2_dud74")]
 
 [node name="SpawnEnemy" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 0.1
 autostart = true
 
 [connection signal="pressed" from="Main2D/CanvasLayer/Control/BoxContainer/Button" to="." method="_on_button_pressed"]

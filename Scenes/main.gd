@@ -8,17 +8,22 @@ var levelInstance: Node2D
 @onready var playerExperienceLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerExperienceLabel
 @onready var playerLevelsLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerLevelsLabel
 
+@onready var timeSpawnLabel = $Main2D/CanvasLayer/Control/BoxContainer/TimeSpawn
+@onready var numMonstersLabel = $Main2D/CanvasLayer/Control/BoxContainer/NumMonsters
+
 var playerExperience: int = 0
 var playerLevels: int = 3
 
-var maxSpawnLimit: int = 5
+var maxSpawnLimit: int = 20
 var upgradeCost: int = 1
 
 func _ready() -> void:
 	loadLevel("World1")
 
 func _physics_process(delta) -> void:
-	$Main2D/CanvasLayer/Control/BoxContainer/Label.text = str("%.1f" % $SpawnEnemy.time_left) + "s"
+	var enemyCount = get_tree().get_nodes_in_group("enemy").size()
+	timeSpawnLabel.text = str("%.1f" % $SpawnEnemy.time_left) + "s"
+	numMonstersLabel.text = str(enemyCount) + "/" + str(maxSpawnLimit) + " Enemies"
 
 func unloadLevel() -> void:
 	if is_instance_valid(levelInstance):
