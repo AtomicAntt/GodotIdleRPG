@@ -12,6 +12,9 @@ var totalHealth: int = 20
 var health: int = 20
 var expValue: int = 10
 
+var maxQueue: int = 2
+var queue: int = 0
+
 # player attacking at
 var atLeft: bool = false
 var atRight: bool = false
@@ -22,9 +25,10 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	
 func isAvailable() -> bool:
-	if atLeft and atRight:
+	if atLeft and atRight and queue == maxQueue:
 		return false
 	return true
+
 
 func hurt(damage: int, player: CharacterBody2D) -> void:
 	if not isDead():
@@ -91,6 +95,25 @@ func isDead() -> bool:
 	if state == States.DEAD:
 		return true
 	return false
+	
+#func queueCheck() -> bool:
+#	if queue.size() > maxQueue:
+#		var player = queue.pop_back()
+#		player.setIdle() # you may not chase me
+#		return true
+#	return false
+#
+#
+#func enqueue(player: CharacterBody2D) -> void:
+#	queue.push_front(player)
+#	queueCheck()
+
+func enqueue() -> bool:
+	if queue < maxQueue:
+		queue += 1
+		return true
+	else:
+		return false
 
 func _on_attack_cooldown_timeout():
 	if not isDead() and is_instance_valid(playerTarget):

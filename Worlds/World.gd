@@ -5,6 +5,7 @@ extends Node2D
 @onready var EnemyEntity := preload("res://GameObjects/EnemyEntity.tscn")
 
 var validEnemyLocations: Array # Array of vector2
+var validPlayerLocations: Array # Array of vector2
 
 var groundTerrainSet: int = 0
 var rng := RandomNumberGenerator.new()
@@ -13,6 +14,7 @@ func _ready() -> void:
 	# Reason for this function: Need to remove navigation from tiles where obstacles like water is present.
 	replaceGroundAtObstacles()
 	recordValidEnemyPositions()
+	recordValidPlayerPositions()
 	
 
 func replaceGroundAtObstacles() -> void:
@@ -52,8 +54,25 @@ func recordValidEnemyPositions() -> void:
 		if hasEightNeighbors and notObstacleTile and notPathTile:
 			validEnemyLocations.append(tileMap.map_to_local(vector))
 
+func recordValidPlayerPositions() -> void:
+	var groundID: int = getLayerIDByName("Ground")
+	var pathID: int = getLayerIDByName("Path")
+	
+	for vector in tileMap.get_used_cells(groundID):
+		var hasEightNeighbors: bool = checkNeighbors(vector.x, vector.y, groundID) == 8
+		var notObstacleTile: bool = getCell(vector.x, vector.y, getLayerIDByName("Obstacle")) == 0
+		var adjacentPathTile: bool = checkNeighbors(vector.x, vector.y, pathID) >= 1
+		
+		if hasEightNeighbors and notObstacleTile and adjacentPathTile:
+			validPlayerLocations.append(tileMap.map_to_local(vector))
+
 func spawnEnemyAtRandomLocation() -> void:
 	var randomLocation: Vector2 = validEnemyLocations[rng.randi_range(0, validEnemyLocations.size()-1)]
 	var enemyInstance: CharacterBody2D = EnemyEntity.instantiate()
 	enemyInstance.global_position = randomLocation
 	add_child(enemyInstance)
+	
+	
+# This function is meant to be called by player to wander
+func returnValidPlayerLocation() -> Vector2: 
+	return validPlayerLocations[rng.randi_range(0, validPlayerLocations.size()-1)]

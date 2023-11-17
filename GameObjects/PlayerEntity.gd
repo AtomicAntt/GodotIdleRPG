@@ -12,7 +12,7 @@ var currentLevel: int = 1
 var expRequired: int = 20
 var exp: int = 0
 
-var speed: float = 60.0
+var speed: float = 70.0
 var sightRange: float = 200.0
 var attackRange: float = 30.0
 var enemyTarget: CharacterBody2D
@@ -25,6 +25,7 @@ var enemyTarget: CharacterBody2D
 @onready var levelLabel = $Control/LevelLabel
 
 @onready var main = get_tree().get_nodes_in_group("main")[0]
+@onready var world = get_tree().get_nodes_in_group("world")[0]
 
 @onready var weaponAnimation := preload("res://GameObjects/WeaponAnimation.tscn")
 
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 			if is_instance_valid(enemyTarget):
 				faceEnemy()
 				if navigationAgent.is_navigation_finished() and closeToEnemy():
-					attack() # attack initially right away
+	#				attack() # attack initially right away (MOVING THIS TO navigation_finished() SIGNAL)
 					engageCombat() # Which will set state to combat
 					return # to prevent playing that "run" animation again
 				
@@ -67,7 +68,30 @@ func _physics_process(delta: float) -> void:
 #				state = States.IDLE
 				setIdle()
 #				print("Enemy is not valid, returning to idle")
+			if not navigationAgent.is_navigation_finished():
+				$AnimationPlayer.play("run")
+				var currentAgentPosition: Vector2 = global_position
+				var nextPathPosition: Vector2 = navigationAgent.get_next_path_position()
 				
+				var newVelocity: Vector2 = (nextPathPosition - currentAgentPosition).normalized() * speed
+				velocity = newVelocity
+				move_and_slide()
+			else:
+				$AnimationPlayer.play("idle")
+		States.WANDER:
+			findClosestEnemy()
+			if is_instance_valid(enemyTarget):
+				state = States.CHASE
+			elif navigationAgent.is_navigation_finished():
+				setIdle()
+			else:
+				$AnimationPlayer.play("run")
+				var currentAgentPosition: Vector2 = global_position
+				var nextPathPosition: Vector2 = navigationAgent.get_next_path_position()
+				
+				var newVelocity: Vector2 = (nextPathPosition - currentAgentPosition).normalized() * speed
+				velocity = newVelocity
+				move_and_slide()
 
 func hurt(damage: int) -> void:
 	if not isDead():
@@ -124,6 +148,8 @@ func engageCombat() -> void:
 		
 		faceEnemy()
 		
+		setFinalPositionTarget(enemyTarget.global_position, enemyTarget) # now lets go to the left or right of the enemy
+		
 		# Check if enemy pos left of player pos
 		if leftOf(enemyTarget.global_position, global_position):
 			enemyTarget.getSprite().flip_h = true
@@ -152,11 +178,20 @@ func faceEnemy() -> void:
 	else:
 		$Sprite2D.flip_h = false
 
+func facePosition(position: Vector2) -> void:
+	if leftOf(global_position, position):
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+
 #func actorSetup() -> void:
 #	await get_tree().physics_frame
-#	setMovementTarget()
+#	setFinalPositionTarget()
 
-func setMovementTarget(movementTarget: Vector2, enemy: CharacterBody2D) -> void:
+func setPositionTarget(movementTarget: Vector2) -> void:
+	navigationAgent.target_position = movementTarget
+
+func setFinalPositionTarget(movementTarget: Vector2, enemy: CharacterBody2D) -> void:
 	# To make sure the player is to the left or right of the enemy (because attacks would look weird otherwise)
 	var newTargetPosition: Vector2 = movementTarget
 	# if close to left w/ unoccupied left side OR have no choice but to go to the left because enemy is at the right..
@@ -187,6 +222,7 @@ func setMovementTarget(movementTarget: Vector2, enemy: CharacterBody2D) -> void:
 
 func attack() -> void:
 	if closeToEnemy() and not enemyTarget.isDead():
+		faceEnemy()
 		var weaponAnimationInstance = weaponAnimation.instantiate()
 		weaponAnimationInstance.global_position = enemyTarget.global_position
 		weaponAnimationInstance.position.y = weaponAnimationInstance.position.y - 5
@@ -213,9 +249,12 @@ func findClosestEnemy() -> void:
 				closestEnemy = enemy
 	
 	if closestEnemy != null:
-		enemyTarget = closestEnemy
-		setMovementTarget(enemyTarget.global_position, enemyTarget)
-		state = States.CHASE
+		if closestEnemy.enqueue(): # Reason for check: Check if enemy queue is maxed out
+			enemyTarget = closestEnemy
+		#	setFinalPositionTarget(enemyTarget.global_position, enemyTarget)
+			setPositionTarget(enemyTarget.global_position)
+			state = States.CHASE
+			$UpdateNav.start()
 
 func setIdle() -> void: # move to inheritence later
 	state = States.IDLE
@@ -231,3 +270,26 @@ func _on_attack_cooldown_timeout() -> void:
 		attack()
 	else:
 		$AttackCooldown.stop()
+
+func _on_update_nav_timeout():
+	if state == States.CHASE and is_instance_valid(enemyTarget):
+		setPositionTarget(enemyTarget.global_position)
+	else:
+		$UpdateNav.stop()
+
+func _on_navigation_agent_2d_navigation_finished():
+	if state == States.COMBAT:
+		attack() # attack initially right away
+
+func wanderToRandomLocation():
+	var randomLocation = world.returnValidPlayerLocation()
+	facePosition(randomLocation)
+	setPositionTarget(randomLocation)
+
+func setWander():
+	state = States.WANDER
+
+func _on_wander_timeout():
+	if state == States.IDLE:
+		setWander()
+		wanderToRandomLocation()

@@ -1222,7 +1222,7 @@ layer_3/tile_data = PackedInt32Array()
 script = ExtResource("3_mpyhr")
 
 [node name="PlayerEntity" parent="." instance=ExtResource("3_cmhxp")]
-position = Vector2(115, 19)
+position = Vector2(-17, -103)
 
 [node name="PlayerEntity2" parent="." instance=ExtResource("3_cmhxp")]
 position = Vector2(0, -65)

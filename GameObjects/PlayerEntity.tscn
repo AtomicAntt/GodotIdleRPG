@@ -206,6 +206,13 @@ target_desired_distance = 5.0
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="UpdateNav" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Wander" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [node name="Control" type="Control" parent="."]
 texture_filter = 1
 layout_mode = 3
@@ -271,4 +278,7 @@ texture_under = ExtResource("5_pkugy")
 texture_progress = ExtResource("6_8l6lu")
 tint_progress = Color(1, 0.152941, 0.109804, 1)
 
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="UpdateNav" to="." method="_on_update_nav_timeout"]
+[connection signal="timeout" from="Wander" to="." method="_on_wander_timeout"]
