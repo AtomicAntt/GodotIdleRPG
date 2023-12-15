@@ -15,7 +15,8 @@ var playerExperience: int = 0
 var playerLevels: int = 3
 
 var maxSpawnLimit: int = 20
-var upgradeCost: int = 1
+var upgradeCost: int = 2
+var upgradeLevel
 
 func _ready() -> void:
 	loadLevel("World1")
@@ -65,7 +66,7 @@ func _on_button_pressed() -> void:
 #		$SpawnEnemy.stop()
 		playerExperience -= upgradeCost
 		updatePlayerExperience()
-		upgradeCost += upgradeCost
+		upgradeCost += upgradeCost/2
 		$SpawnEnemy.wait_time /= 1.2
 		$Main2D/CanvasLayer/Control/BoxContainer/Button.text = "upgrade enemy spawner\ncost: " + str(upgradeCost) + " PX\nspawn time: " + str("%.1f" % $SpawnEnemy.wait_time) + "s"
 #		$SpawnEnemy.start()

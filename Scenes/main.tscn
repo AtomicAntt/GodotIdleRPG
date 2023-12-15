@@ -101,10 +101,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -21.0
-offset_top = -72.0
-offset_right = 19.0
-offset_bottom = -32.0
+offset_left = -276.0
+offset_top = -94.0
+offset_right = 276.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_81sn4")
@@ -126,7 +126,7 @@ layout_mode = 2
 focus_mode = 0
 disabled = true
 text = "upgrade enemy spawner
-cost: 1 PX
+cost: 2 PX
 spawn time: 5s"
 
 [node name="Menu" type="Control" parent="."]
@@ -137,7 +137,7 @@ offset_bottom = 40.0
 [node name="UsernameGenerator" parent="." groups=["usernameGenerator"] instance=ExtResource("2_dud74")]
 
 [node name="SpawnEnemy" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 5.0
 autostart = true
 
 [connection signal="pressed" from="Main2D/CanvasLayer/Control/BoxContainer/Button" to="." method="_on_button_pressed"]

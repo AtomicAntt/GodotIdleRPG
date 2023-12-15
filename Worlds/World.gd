@@ -74,5 +74,5 @@ func spawnEnemyAtRandomLocation() -> void:
 	
 	
 # This function is meant to be called by player to wander
-func returnValidPlayerLocation() -> Vector2: 
+func returnValidPlayerLocation() -> Vector2:
 	return validPlayerLocations[rng.randi_range(0, validPlayerLocations.size()-1)]
