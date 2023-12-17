@@ -79,7 +79,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"setIdle"
+"method": &"setAttacking"
 }]
 }
 
@@ -199,6 +199,10 @@ libraries = {
 "": SubResource("AnimationLibrary_di55j")
 }
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+
 [node name="Control" type="Control" parent="."]
 texture_filter = 1
 layout_mode = 3
@@ -250,4 +254,8 @@ tint_progress = Color(1, 0.152941, 0.109804, 1)
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="Wander" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="Wander" to="." method="_on_wander_timeout"]

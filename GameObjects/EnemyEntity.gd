@@ -2,8 +2,11 @@ extends CharacterBody2D
 
 @onready var healthBarUnder = $Control/HealthBarUnder
 @onready var healthBarOver = $Control/HealthBarOver
+@onready var navigationAgent: NavigationAgent2D = $NavigationAgent2D
 
 @onready var enemyAttackAnimation = preload("res://GameObjects/EnemyAttackAnimation.tscn")
+
+@onready var world = get_tree().get_nodes_in_group("world")[0]
 
 enum States {IDLE, WANDER, ATTACKING, DEAD}
 var state: States
@@ -11,6 +14,8 @@ var state: States
 var totalHealth: int = 20
 var health: int = 20
 var expValue: int = 10
+
+var speed: float = 40.0
 
 var maxQueue: int = 2
 var queue: int = 0
@@ -24,6 +29,27 @@ var playerTarget: CharacterBody2D
 func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	
+func _physics_process(delta: float) -> void:
+#	$Control/Label.text = str(state)
+#	$AnimationPlayer.play("idle")
+	match state:
+		States.IDLE:
+			pass
+		States.WANDER:
+			if navigationAgent.is_navigation_finished():
+				setIdle()
+			else:
+				$AnimationPlayer.play("run")
+				var currentAgentPosition: Vector2 = global_position
+				var nextPathPosition: Vector2 = navigationAgent.get_next_path_position()
+				
+				var newVelocity: Vector2 = (nextPathPosition - currentAgentPosition).normalized() * speed
+				velocity = newVelocity
+				move_and_slide()
+		States.ATTACKING:
+			if not is_instance_valid(playerTarget):
+				setIdle()
+
 func isAvailable() -> bool:
 	if atLeft and atRight and queue == maxQueue:
 		return false
@@ -32,6 +58,7 @@ func isAvailable() -> bool:
 
 func hurt(damage: int, player: CharacterBody2D) -> void:
 	if not isDead():
+		state = States.ATTACKING
 		playerTarget = player
 		facePlayer()
 		health -= damage
@@ -72,11 +99,9 @@ func leftOf(object: Vector2, target: Vector2) -> bool:
 		return true
 	return false
 
-func _physics_process(delta: float) -> void:
-#	$AnimationPlayer.play("idle")
-	match state:
-		States.IDLE:
-			pass
+func setAttacking() -> void:
+	$AnimationPlayer.play("idle")
+	state = States.ATTACKING
 
 func setIdle() -> void: # move to inheritence later
 	$AnimationPlayer.play("idle")
@@ -118,3 +143,25 @@ func enqueue() -> bool:
 func _on_attack_cooldown_timeout():
 	if not isDead() and is_instance_valid(playerTarget):
 		attack()
+
+func setPositionTarget(movementTarget: Vector2) -> void:
+	navigationAgent.target_position = movementTarget
+
+func facePosition(position: Vector2) -> void:
+	if leftOf(global_position, position):
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
+
+func wanderToRandomLocation():
+	var randomLocation = world.returnValidPlayerLocation()
+	facePosition(randomLocation)
+	setPositionTarget(randomLocation)
+
+func setWander():
+	state = States.WANDER
+
+func _on_wander_timeout():
+	if state == States.IDLE:
+		setWander()
+		wanderToRandomLocation()

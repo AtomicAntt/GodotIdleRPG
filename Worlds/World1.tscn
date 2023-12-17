@@ -1356,3 +1356,54 @@ position = Vector2(0, -65)
 
 [node name="PlayerEntity3" parent="." instance=ExtResource("3_cmhxp")]
 position = Vector2(-63, -104)
+
+[node name="PlayerEntity4" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-200, -24)
+
+[node name="PlayerEntity5" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(233, -288)
+
+[node name="PlayerEntity6" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(351, -152)
+
+[node name="PlayerEntity7" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(306, 17)
+
+[node name="PlayerEntity8" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(355, 150)
+
+[node name="PlayerEntity9" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-102, 201)
+
+[node name="PlayerEntity10" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-404, 126)
+
+[node name="PlayerEntity11" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-398, -24)
+
+[node name="PlayerEntity12" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-295, -251)
+
+[node name="PlayerEntity13" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-123, -305)
+
+[node name="PlayerEntity14" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(60, -154)
+
+[node name="PlayerEntity15" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(344, -266)
+
+[node name="PlayerEntity16" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(109, -41)
+
+[node name="PlayerEntity17" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(67, 145)
+
+[node name="PlayerEntity18" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(256, 84)
+
+[node name="PlayerEntity19" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-429, 212)
+
+[node name="PlayerEntity20" parent="." instance=ExtResource("3_cmhxp")]
+position = Vector2(-447, -88)
