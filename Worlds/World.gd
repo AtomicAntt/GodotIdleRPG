@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var tileMap: TileMap = $TileMap
+@onready var camera2D: Camera2D = $Camera2D
 
 @onready var EnemyEntity := preload("res://GameObjects/EnemyEntity.tscn")
 
@@ -15,7 +16,7 @@ func _ready() -> void:
 	replaceGroundAtObstacles()
 	recordValidEnemyPositions()
 	recordValidPlayerPositions()
-	
+
 
 func replaceGroundAtObstacles() -> void:
 	var groundSourceID: int = 1
@@ -71,8 +72,7 @@ func spawnEnemyAtRandomLocation() -> void:
 	var enemyInstance: CharacterBody2D = EnemyEntity.instantiate()
 	enemyInstance.global_position = randomLocation
 	add_child(enemyInstance)
-	
-	
+
 # This function is meant to be called by player to wander
 func returnValidPlayerLocation() -> Vector2:
 	return validPlayerLocations[rng.randi_range(0, validPlayerLocations.size()-1)]

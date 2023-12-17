@@ -39,7 +39,7 @@ func handleDrag(event: InputEventScreenDrag):
 	
 	if touchPoints.size() == 1:
 		if canPan:
-			offset -= event.relative * panSpeed / zoom.x # normalize depending on zoom
+			position -= event.relative * panSpeed / zoom.x # normalize depending on zoom
 	
 	elif touchPoints.size() == 2:
 		var touchPointPositions = touchPoints.values()
