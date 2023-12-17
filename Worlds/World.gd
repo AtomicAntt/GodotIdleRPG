@@ -16,7 +16,19 @@ func _ready() -> void:
 	replaceGroundAtObstacles()
 	recordValidEnemyPositions()
 	recordValidPlayerPositions()
+	fillBoundary()
 
+func fillBoundary() -> void:
+	const boundarySourceID: int = 1
+	const boundaryAtlasCoordinate: Vector2i = Vector2i(17, 2)
+	for cellPosX in range(-100,101):
+		for cellPosY in range(-100, 101):
+			if tileMap.get_cell_source_id(getLayerIDByName("Ground"), Vector2i(cellPosX, cellPosY)) == -1:
+				tileMap.set_cell(getLayerIDByName("Boundary"), Vector2i(cellPosX, cellPosY), boundarySourceID, boundaryAtlasCoordinate)
+	
+	#For some reason, this not work because probably terrain bitmask is no good, so this function shall only make things dark
+#	tileMap.set_cells_terrain_connect(getLayerIDByName("Darkness"), tileMap.get_used_cells(getLayerIDByName("Darkness")), darknessTerrainSet, darknessTerrain, false)
+	
 
 func replaceGroundAtObstacles() -> void:
 	var groundSourceID: int = 1
