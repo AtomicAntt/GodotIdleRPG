@@ -12,7 +12,7 @@ var levelInstance: Node2D
 @onready var numMonstersLabel = $Main2D/CanvasLayer/Control/BoxContainer/NumMonsters
 
 var playerExperience: int = 0
-var playerLevels: int = 3
+var playerLevels: int = 1
 
 var maxSpawnLimit: int = 50
 var upgradeCost: int = 2
