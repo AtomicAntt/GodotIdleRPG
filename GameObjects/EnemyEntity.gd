@@ -8,17 +8,21 @@ extends CharacterBody2D
 
 @onready var world = get_tree().get_nodes_in_group("world")[0]
 
-enum States {IDLE, WANDER, ATTACKING, DEAD}
+enum States {IDLE, WANDER, ATTACKING, CHASE, DEAD}
 var state: States
+
+var playerToChase: CharacterBody2D
 
 var totalHealth: int = 20
 var health: int = 20
 var expValue: int = 10
 
-var speed: float = 40.0
+var speed: float = 50.0
 
 var maxQueue: int = 2
 var queue: int = 0
+
+var attackRange: float = 35.0
 
 # player attacking at
 var atLeft: bool = false
@@ -30,13 +34,17 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	
 func _physics_process(delta: float) -> void:
-#	$Control/Label.text = str(state)
+	$Control/Label.text = str(state)
 #	$AnimationPlayer.play("idle")
 	match state:
 		States.IDLE:
-			pass
+			# Player sees enemy -> they call enemy.enqueue(self) -> playerToChase assigned in here -> this happens
+			if is_instance_valid(playerToChase):
+				state = States.CHASE
 		States.WANDER:
-			if navigationAgent.is_navigation_finished():
+			if is_instance_valid(playerToChase):
+				state = States.CHASE
+			elif navigationAgent.is_navigation_finished():
 				setIdle()
 			else:
 				$AnimationPlayer.play("run")
@@ -49,12 +57,31 @@ func _physics_process(delta: float) -> void:
 		States.ATTACKING:
 			if not is_instance_valid(playerTarget):
 				setIdle()
+		States.CHASE:
+			if not is_instance_valid(playerToChase):
+				setIdle()
+			elif closeToPlayer():
+				setAttacking()
+			else:
+				facePosition(playerToChase.global_position)
+				$AnimationPlayer.play("run")
+				var currentAgentPosition: Vector2 = global_position
+				var nextPathPosition: Vector2 = navigationAgent.get_next_path_position()
+				
+				var newVelocity: Vector2 = (nextPathPosition - currentAgentPosition).normalized() * speed
+				velocity = newVelocity
+				move_and_slide()
 
 func isAvailable() -> bool:
 	if atLeft and atRight and queue == maxQueue:
 		return false
 	return true
 
+func closeToPlayer() -> bool:
+	if is_instance_valid(playerToChase):
+		if playerToChase.global_position.distance_to(global_position) <= attackRange:
+			return true
+	return false
 
 func hurt(damage: int, player: CharacterBody2D) -> void:
 	if not isDead():
@@ -133,8 +160,19 @@ func isDead() -> bool:
 #	queue.push_front(player)
 #	queueCheck()
 
-func enqueue() -> bool:
+func setPlayerChase(playerChase: CharacterBody2D) -> void:
+	playerToChase = playerChase
+	navigationAgent.target_position = playerChase.global_position
+
+func enqueue(player: CharacterBody2D) -> bool:
 	if queue < maxQueue:
+		# explanation: if new player that queue to attack is closer, then chase that guy instead
+		if is_instance_valid(playerToChase):
+			if playerToChase.global_position.distance_squared_to(global_position) > player.global_position.distance_squared_to(global_position):
+				setPlayerChase(player)
+		else:
+			setPlayerChase(player)
+		
 		queue += 1
 		return true
 	else:

@@ -13,7 +13,7 @@ var expRequired: int = 20
 var exp: int = 0
 
 var speed: float = 70.0
-var sightRange: float = 200.0
+var sightRange: float = 600.0
 var attackRange: float = 30.0
 var enemyTarget: CharacterBody2D
 
@@ -249,7 +249,7 @@ func findClosestEnemy() -> void:
 				closestEnemy = enemy
 	
 	if closestEnemy != null:
-		if closestEnemy.enqueue(): # Reason for check: Check if enemy queue is maxed out
+		if closestEnemy.enqueue(self): # Reason for check: Check if enemy queue is maxed out
 			enemyTarget = closestEnemy
 		#	setFinalPositionTarget(enemyTarget.global_position, enemyTarget)
 			setPositionTarget(enemyTarget.global_position)

@@ -14,7 +14,7 @@ var levelInstance: Node2D
 var playerExperience: int = 0
 var playerLevels: int = 3
 
-var maxSpawnLimit: int = 20
+var maxSpawnLimit: int = 50
 var upgradeCost: int = 2
 var upgradeLevel
 
