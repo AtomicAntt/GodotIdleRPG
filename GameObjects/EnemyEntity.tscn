@@ -179,6 +179,7 @@ default_font = ExtResource("3_1hkqc")
 default_font_size = 8
 
 [node name="EnemyEntity" type="CharacterBody2D" groups=["enemy"]]
+y_sort_enabled = true
 script = ExtResource("1_od1qw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -10,20 +10,28 @@ tile_data = PackedInt32Array(0, 458752, 7, 65536, 458752, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecxuf"]
 texture = ExtResource("1_nqe6g")
-1:1/size_in_atlas = Vector2i(1, 2)
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 7, 4, 7, 4, 12, -4, 12)
 7:7/size_in_atlas = Vector2i(1, 2)
-7:7/animation_frame_0/duration = 1.0
-7:7/animation_frame_1/duration = 1.0
-7:7/animation_frame_2/duration = 1.0
-7:7/animation_frame_3/duration = 1.0
+7:7/animation_frame_0/duration = 0.5
+7:7/animation_frame_1/duration = 0.5
+7:7/animation_frame_2/duration = 0.5
+7:7/animation_frame_3/duration = 0.5
 7:7/0 = 0
+7:7/0/texture_origin = Vector2i(0, 8)
+7:7/0/y_sort_origin = -8
 7:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:7/0/physics_layer_0/angular_velocity = 0.0
-7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 7, 4, 7, 4, 12, -4, 12)
+2:3/size_in_atlas = Vector2i(2, 2)
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, 3)
+2:3/0/y_sort_origin = -7
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+1:1/size_in_atlas = Vector2i(1, 2)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 8)
+1:1/0/y_sort_origin = -9
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jqutc"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

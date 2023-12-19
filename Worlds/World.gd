@@ -35,6 +35,9 @@ func replaceGroundAtObstacles() -> void:
 	var groundAtlasCoordinate: Vector2i = Vector2i(2, 3)
 	for cellPos in tileMap.get_used_cells_by_id(getLayerIDByName("Obstacle")):
 		tileMap.set_cell(getLayerIDByName("Ground"), cellPos, groundSourceID, groundAtlasCoordinate)
+	
+	for cellPos in tileMap.get_used_cells_by_id(getLayerIDByName("Props")):
+		tileMap.set_cell(getLayerIDByName("Ground"), cellPos, groundSourceID, groundAtlasCoordinate)
 
 func getLayerIDByName(name: String) -> int:
 	for layerID in tileMap.get_layers_count():
