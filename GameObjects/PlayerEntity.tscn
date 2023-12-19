@@ -213,6 +213,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Control" type="Control" parent="."]
+z_index = 1
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
