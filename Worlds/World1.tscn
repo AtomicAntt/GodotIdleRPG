@@ -51,7 +51,7 @@ layer_5/modulate = Color(1, 1, 1, 1)
 layer_5/y_sort_enabled = true
 layer_5/y_sort_origin = 0
 layer_5/z_index = 0
-layer_5/tile_data = PackedInt32Array(-458756, 458752, 7, -393218, 65536, 1, -262156, 65536, 1, -327677, 65536, 1, -917511, 65536, 1, -851983, 65536, 1, -196635, 65536, 1, 589807, 65536, 1, 589798, 65536, 1, 393230, 65536, 1, -65531, 65536, 1, -655357, 65536, 1, -1048573, 65536, 1, -1245171, 65536, 1, -1310729, 65536, 1, 983048, 65536, 1, 917513, 65536, 1, -65525, 65536, 1, 589845, 65536, 1, -524260, 65536, 1, -917483, 65536, 1, -1245157, 65536, 1, -1572847, 65536, 1, -1376253, 65536, 1, -655374, 65536, 1, 917476, 65536, 1, -458780, 65536, 1, -1179676, 65536, 1, -1507350, 65536, 1, -1376285, 65536, 1, -851941, 131072, 3, -1245191, 131072, 3, -65562, 131072, 3, -65547, 131072, 3, 327684, 131072, 3, 1114095, 131072, 3)
+layer_5/tile_data = PackedInt32Array(-458756, 458752, 7, -393218, 65536, 1, -262156, 65536, 1, -327677, 65536, 1, -917511, 65536, 1, -851983, 65536, 1, -196635, 65536, 1, 589807, 65536, 1, 589798, 65536, 1, 393230, 65536, 1, -65531, 65536, 1, -655357, 65536, 1, -1048573, 65536, 1, -1245171, 65536, 1, -1310729, 65536, 1, 983048, 65536, 1, 917513, 65536, 1, -65525, 65536, 1, 589845, 65536, 1, -524260, 65536, 1, -917483, 65536, 1, -1245157, 65536, 1, -1572847, 65536, 1, -1376253, 65536, 1, -655374, 65536, 1, 917476, 65536, 1, -458780, 65536, 1, -1179676, 65536, 1, -1507350, 65536, 1, -1376285, 65536, 1, -851941, 131072, 3, -1245191, 131072, 3, -65562, 131072, 3, -65547, 131072, 3, 327684, 131072, 3, 1114095, 131072, 3, -524290, 458752, 1, -262168, 458752, 1, 327697, 458752, 1, 720885, 458752, 1, -851949, 458752, 1, -327653, 458752, 1, 19, 458752, 1, -458766, 458752, 1, -1048599, 458752, 1, -1376277, 458752, 1, -1376261, 458752, 1, -720908, 589824, 1, -655334, 589824, 1, -1179639, 589824, 1, -1507309, 589824, 1, -65560, 589824, 1, 720870, 589824, 1, 1245176, 589824, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(13, 206)
@@ -65,4 +65,80 @@ script = ExtResource("3_mpyhr")
 
 [node name="PlayerEntity" parent="." instance=ExtResource("3_cmhxp")]
 y_sort_enabled = true
-position = Vector2(-70, -139)
+position = Vector2(-59, -145)
+
+[node name="PlayerEntity2" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-6, -158)
+
+[node name="PlayerEntity3" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(13, -65)
+
+[node name="PlayerEntity4" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-155, -65)
+
+[node name="PlayerEntity5" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-26, 57)
+
+[node name="PlayerEntity6" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-53, -234)
+
+[node name="PlayerEntity7" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-163, -190)
+
+[node name="PlayerEntity8" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-203, -249)
+
+[node name="PlayerEntity9" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(55, -112)
+
+[node name="PlayerEntity10" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(100, -51)
+
+[node name="PlayerEntity11" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(124, -203)
+
+[node name="PlayerEntity12" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(52, -293)
+
+[node name="PlayerEntity13" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(162, -240)
+
+[node name="PlayerEntity14" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(67, -220)
+
+[node name="PlayerEntity15" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(151, 1)
+
+[node name="PlayerEntity16" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-212, -6)
+
+[node name="PlayerEntity17" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-255, -188)
+
+[node name="PlayerEntity18" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-255, -188)
+
+[node name="PlayerEntity19" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-128, -6)
+
+[node name="PlayerEntity20" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(44, -5)

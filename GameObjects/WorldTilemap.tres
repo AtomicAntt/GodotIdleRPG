@@ -10,6 +10,7 @@ tile_data = PackedInt32Array(0, 458752, 7, 65536, 458752, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecxuf"]
 texture = ExtResource("1_nqe6g")
+use_texture_padding = false
 7:7/size_in_atlas = Vector2i(1, 2)
 7:7/animation_frame_0/duration = 0.5
 7:7/animation_frame_1/duration = 0.5
@@ -32,6 +33,14 @@ texture = ExtResource("1_nqe6g")
 1:1/0/y_sort_origin = -9
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
+7:1/0 = 0
+7:1/0/y_sort_origin = -9
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = 0.0
+9:1/0 = 0
+9:1/0/y_sort_origin = -9
+9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jqutc"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -40,6 +49,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_igeqj"]
 texture = ExtResource("2_nd2x3")
+use_texture_padding = false
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
@@ -702,6 +712,7 @@ texture = ExtResource("2_nd2x3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwmex"]
 texture = ExtResource("3_85okj")
+use_texture_padding = false
 1:1/0 = 0
 1:1/0/terrain_set = 2
 1:1/0/terrain = 0
@@ -858,6 +869,7 @@ texture = ExtResource("3_85okj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uh46h"]
 texture = ExtResource("4_4dx6w")
+use_texture_padding = false
 1:6/animation_columns = 4
 1:6/animation_separation = Vector2i(4, 0)
 1:6/animation_speed = 1.5
