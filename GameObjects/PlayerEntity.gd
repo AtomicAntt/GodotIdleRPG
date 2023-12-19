@@ -77,7 +77,9 @@ func _physics_process(delta: float) -> void:
 				velocity = newVelocity
 				move_and_slide()
 			else:
-				$AnimationPlayer.play("idle")
+				#removal reason: idle overrides that hurt anim
+				pass
+#				$AnimationPlayer.play("idle")
 		States.WANDER:
 			findClosestEnemy()
 			if is_instance_valid(enemyTarget):
@@ -279,6 +281,7 @@ func _on_update_nav_timeout():
 
 func _on_navigation_agent_2d_navigation_finished():
 	if state == States.COMBAT:
+		$AnimationPlayer.play("idle") # also stop running
 		attack() # attack initially right away
 
 func wanderToRandomLocation():
@@ -293,3 +296,5 @@ func _on_wander_timeout():
 	if state == States.IDLE:
 		setWander()
 		wanderToRandomLocation()
+
+
