@@ -66,3 +66,79 @@ script = ExtResource("3_mpyhr")
 [node name="PlayerEntity" parent="." instance=ExtResource("3_cmhxp")]
 y_sort_enabled = true
 position = Vector2(-66, -156)
+
+[node name="PlayerEntity2" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(20, -216)
+
+[node name="PlayerEntity3" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(8, -132)
+
+[node name="PlayerEntity4" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(9, -51)
+
+[node name="PlayerEntity5" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(9, -51)
+
+[node name="PlayerEntity6" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-155, -84)
+
+[node name="PlayerEntity7" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-117, 4)
+
+[node name="PlayerEntity9" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-24, 53)
+
+[node name="PlayerEntity10" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(170, 33)
+
+[node name="PlayerEntity8" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(110, -39)
+
+[node name="PlayerEntity11" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(131, -194)
+
+[node name="PlayerEntity12" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(29, -301)
+
+[node name="PlayerEntity14" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-64, -286)
+
+[node name="PlayerEntity15" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-210, -16)
+
+[node name="PlayerEntity17" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(291, 40)
+
+[node name="PlayerEntity18" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(360, -258)
+
+[node name="PlayerEntity19" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(246, -296)
+
+[node name="PlayerEntity20" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-206, -236)
+
+[node name="PlayerEntity16" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(-205, -286)
+
+[node name="PlayerEntity13" parent="." instance=ExtResource("3_cmhxp")]
+y_sort_enabled = true
+position = Vector2(142, -279)

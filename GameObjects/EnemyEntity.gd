@@ -34,7 +34,7 @@ func _ready() -> void:
 	$AnimationPlayer.play("idle")
 	
 func _physics_process(delta: float) -> void:
-	$Control/Label.text = str(state)
+#	$Control/Label.text = str(state)
 #	$AnimationPlayer.play("idle")
 	match state:
 		States.IDLE:
