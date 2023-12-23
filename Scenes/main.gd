@@ -11,6 +11,8 @@ var levelInstance: Node2D
 @onready var timeSpawnLabel = $Main2D/CanvasLayer/Control/BoxContainer/TimeSpawn
 @onready var numMonstersLabel = $Main2D/CanvasLayer/Control/BoxContainer/NumMonsters
 
+@onready var playerEntity := preload("res://GameObjects/PlayerEntity.tscn")
+
 var playerExperience: int = 0
 var playerLevels: int = 1
 
@@ -42,9 +44,19 @@ func loadLevel(levelName: String) -> void:
 func addLevel() -> void:
 	playerLevels += 1
 	updatePlayerLevels() # visually
+	if playerLevels % 2 == 0:
+		addPlayer()
 
 func updatePlayerLevels() -> void:
 	playerLevelsLabel.text = "PL: " + str(playerLevels)
+	
+func addPlayer() -> void:
+	print("add player")
+	if is_instance_valid(get_tree().get_nodes_in_group("spawnPosition")[0]) and is_instance_valid(levelInstance):
+		print("add player successfully")
+		var playerInstance: CharacterBody2D = playerEntity.instantiate()
+		levelInstance.add_child(playerInstance)
+		playerInstance.global_position = get_tree().get_nodes_in_group("spawnPosition")[0].global_position
 
 func addExperience(expAmount: int) -> void:
 	playerExperience += expAmount
