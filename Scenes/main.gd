@@ -14,7 +14,7 @@ var levelInstance: Node2D
 @onready var playerEntity := preload("res://GameObjects/PlayerEntity.tscn")
 
 var playerExperience: int = 0
-var playerLevels: int = 1
+#var playerLevels: int = 1 (Use global)
 
 var maxSpawnLimit: int = 50
 var upgradeCost: int = 2
@@ -22,6 +22,15 @@ var upgradeLevel
 
 func _ready() -> void:
 	loadLevel("World1")
+#	print(Time.get_unix_time_from_datetime_dict({
+#		"year": 2023,
+#		"month": 12,
+#		"day": 27,
+#		"hour": 1,
+#		"minute": 1,
+#		"second": 1
+#		}))
+	print(Time.get_unix_time_from_datetime_dict(Time.get_datetime_dict_from_system()))
 
 func _physics_process(delta) -> void:
 	var enemyCount = get_tree().get_nodes_in_group("enemy").size()
@@ -41,14 +50,14 @@ func loadLevel(levelName: String) -> void:
 		levelInstance = levelResource.instantiate()
 		main2D.add_child(levelInstance)
 
-func addLevel() -> void:
-	playerLevels += 1
-	updatePlayerLevels() # visually
-	if playerLevels % 2 == 0:
-		addPlayer()
+#func addLevel() -> void:
+#	Global.totalLevels += 1
+#	updatePlayerLevels() # visually
+#	if playerLevels % 2 == 0:
+#		addPlayer()
 
-func updatePlayerLevels() -> void:
-	playerLevelsLabel.text = "PL: " + str(playerLevels)
+#func updatePlayerLevels() -> void:
+#	playerLevelsLabel.text = "PL: " + str(playerLevels)
 	
 func addPlayer() -> void:
 	print("add player")

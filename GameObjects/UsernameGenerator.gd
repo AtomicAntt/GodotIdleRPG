@@ -196,7 +196,7 @@ func returnModified(nameModifiedType: int, words: Array) -> String:
 		NameModifierTypes.REPEAT:
 			modifiedString = "".join(PackedStringArray(repeat(words)))
 	return modifiedString
-		
+
 func returnFormatted(nameFormatType: int, string: String) -> String:
 	var modifiedString: String = ""
 	match nameFormatType:
