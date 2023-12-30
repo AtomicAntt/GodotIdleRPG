@@ -22,15 +22,6 @@ var upgradeLevel
 
 func _ready() -> void:
 	loadLevel("World1")
-#	print(Time.get_unix_time_from_datetime_dict({
-#		"year": 2023,
-#		"month": 12,
-#		"day": 27,
-#		"hour": 1,
-#		"minute": 1,
-#		"second": 1
-#		}))
-	print(Time.get_unix_time_from_datetime_dict(Time.get_datetime_dict_from_system()))
 
 func _physics_process(delta) -> void:
 	var enemyCount = get_tree().get_nodes_in_group("enemy").size()
