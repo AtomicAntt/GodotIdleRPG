@@ -61,6 +61,7 @@ func getEnemyCount() -> int:
 func _physics_process(delta) -> void:
 	timeSpawnLabel.text = str("%.1f" % $SpawnEnemy.time_left) + "s"
 	numMonstersLabel.text = str(getEnemyCount()) + "/" + str(maxSpawnLimit) + " Enemies"
+	updateUpgradeAvailability()
 
 func _ready() -> void:
 	# Reason for this function: Need to remove navigation from tiles where obstacles like water is present.
