@@ -6,7 +6,11 @@ extends CharacterBody2D
 
 @onready var enemyAttackAnimation = preload("res://GameObjects/EnemyAttackAnimation.tscn")
 
-@onready var world = get_tree().get_nodes_in_group("world")[0]
+#@onready var world = get_tree().get_nodes_in_group("world")[0]
+
+# May have multiple world nodes, and we can probably assume world is the parent of this guy
+@onready var world = self.get_parent()
+
 
 enum States {IDLE, WANDER, ATTACKING, CHASE, DEAD}
 var state: States

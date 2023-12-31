@@ -3,92 +3,62 @@ extends Control
 @onready var menu: Control = $Menu
 @onready var main2D: Node2D = $Main2D
 
-var levelInstance: Node2D
+var levelInstances: Array[Node2D]
 
 @onready var playerExperienceLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerExperienceLabel
 @onready var playerLevelsLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerLevelsLabel
 
-@onready var timeSpawnLabel = $Main2D/CanvasLayer/Control/BoxContainer/TimeSpawn
-@onready var numMonstersLabel = $Main2D/CanvasLayer/Control/BoxContainer/NumMonsters
+#@onready var timeSpawnLabel = $Main2D/CanvasLayer/Control/BoxContainer/TimeSpawn
+#@onready var numMonstersLabel = $Main2D/CanvasLayer/Control/BoxContainer/NumMonsters
 
 @onready var playerEntity := preload("res://GameObjects/PlayerEntity.tscn")
 
-var playerExperience: int = 0
+#var playerExperience: int = 0
 #var playerLevels: int = 1 (Use global)
 
 var maxSpawnLimit: int = 50
 var upgradeCost: int = 2
-var upgradeLevel
 
 func _ready() -> void:
 	loadLevel("World1")
 
-func _physics_process(delta) -> void:
-	var enemyCount = get_tree().get_nodes_in_group("enemy").size()
-	timeSpawnLabel.text = str("%.1f" % $SpawnEnemy.time_left) + "s"
-	numMonstersLabel.text = str(enemyCount) + "/" + str(maxSpawnLimit) + " Enemies"
-
 func unloadLevel() -> void:
-	if is_instance_valid(levelInstance):
-		levelInstance.queue_free()
-	levelInstance = null
+	if is_instance_valid(levelInstances[0]):
+		levelInstances[0].queue_free()
+		levelInstances.pop_front()
 
 func loadLevel(levelName: String) -> void:
 	unloadLevel()
 	var levelPath := "res://Worlds/%s.tscn" % levelName
 	var levelResource := load(levelPath)
 	if levelResource:
-		levelInstance = levelResource.instantiate()
-		main2D.add_child(levelInstance)
+#		levelInstances = levelResource.instantiate()
+		levelInstances.append(levelResource.instantiate())
+		main2D.add_child(levelInstances.back()) #This is the thing you just added to the back of the array
 
-#func addLevel() -> void:
-#	Global.totalLevels += 1
-#	updatePlayerLevels() # visually
-#	if playerLevels % 2 == 0:
-#		addPlayer()
+# Below 2 functions called by playerEntity nodes
 
-#func updatePlayerLevels() -> void:
-#	playerLevelsLabel.text = "PL: " + str(playerLevels)
-	
-func addPlayer() -> void:
-	print("add player")
-	if is_instance_valid(get_tree().get_nodes_in_group("spawnPosition")[0]) and is_instance_valid(levelInstance):
-		print("add player successfully")
-		var playerInstance: CharacterBody2D = playerEntity.instantiate()
-		levelInstance.add_child(playerInstance)
-		playerInstance.global_position = get_tree().get_nodes_in_group("spawnPosition")[0].global_position
+func updateUI() -> void:
+	playerLevelsLabel.text = "PL: " + str(Global.totalLevel)
+	playerExperienceLabel.text = "PX: " + str(Global.playerExperience)
 
 func addExperience(expAmount: int) -> void:
-	playerExperience += expAmount
-	updatePlayerExperience()
-	updateUpgradeAvailability()
+	Global.addExperience(expAmount)
+	updateUI()
 
-func updatePlayerExperience() -> void:
-	playerExperienceLabel.text = "PX: " + str(playerExperience)
+# These below 2 functions are used to add players as the game goes on to available worlds
 
-func updateUpgradeAvailability() -> void:
-	if playerExperience >= upgradeCost:
-		$Main2D/CanvasLayer/Control/BoxContainer/Button.disabled = false
-	else:
-		$Main2D/CanvasLayer/Control/BoxContainer/Button.disabled = true
-
-func _on_button_pressed() -> void:
-	print($SpawnEnemy.wait_time)
-	if $SpawnEnemy.wait_time > 0.1 and playerExperience >= upgradeCost:
-#		$SpawnEnemy.stop()
-		playerExperience -= upgradeCost
-		updatePlayerExperience()
-		upgradeCost += upgradeCost/2
-		$SpawnEnemy.wait_time /= 1.2
-		$Main2D/CanvasLayer/Control/BoxContainer/Button.text = "upgrade enemy spawner\ncost: " + str(upgradeCost) + " PX\nspawn time: " + str("%.1f" % $SpawnEnemy.wait_time) + "s"
-#		$SpawnEnemy.start()
+func addPlayer(playerToAdd: Player) -> void:
+	if is_instance_valid(levelInstances[0]):
+		var bestLevelToPutInto: World = levelInstances[0] # Future: Make the default the town level
+		for level in levelInstances:
+			# Can I fit the player in this level (50 max)? Is he even able to enter w/ level restrictions?
+			if level.playersInside.size() < maxSpawnLimit and playerToAdd.level <= level.maxLevel:
+				bestLevelToPutInto = level
 		
-		updateUpgradeAvailability()
-	
-	
-
-func _on_spawn_enemy_timeout():
-	var enemyCount = get_tree().get_nodes_in_group("enemy").size()
-	if enemyCount < maxSpawnLimit:
-		var world = get_tree().get_nodes_in_group("world")[0]
-		world.spawnEnemyAtRandomLocation()
+		var playerInstance: PlayerEntity = playerEntity.instantiate()
+		playerInstance.loadPlayerData(playerToAdd)
+		bestLevelToPutInto.add_child(playerInstance)
+		playerInstance.global_position = bestLevelToPutInto.spawnPosition.global_position
+	else:
+		print("There are no level instances!")

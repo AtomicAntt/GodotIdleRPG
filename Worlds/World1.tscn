@@ -1,13 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnjicqhnb0xc3"]
+[gd_scene load_steps=12 format=3 uid="uid://dnjicqhnb0xc3"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_drukt"]
 [ext_resource type="TileSet" uid="uid://cdoqusgjixrhn" path="res://GameObjects/WorldTilemap.tres" id="2_d7o4q"]
 [ext_resource type="PackedScene" uid="uid://cb7i211hwvfqi" path="res://GameObjects/PlayerEntity.tscn" id="3_cmhxp"]
 [ext_resource type="Script" path="res://Worlds/TouchCameraController.gd" id="3_mpyhr"]
+[ext_resource type="FontFile" uid="uid://1wjemhgfvl8t" path="res://GameAssets/Fonts/m5x7.ttf" id="5_k4vuj"]
+
+[sub_resource type="Theme" id="Theme_y0gif"]
+default_font = ExtResource("5_k4vuj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsr2r"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.772549, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cstv"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sges3"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcne2"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.501961, 0, 1)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_45d76"]
+Button/styles/disabled = SubResource("StyleBoxFlat_dsr2r")
+Button/styles/hover = SubResource("StyleBoxFlat_1cstv")
+Button/styles/normal = SubResource("StyleBoxFlat_sges3")
+Button/styles/pressed = SubResource("StyleBoxFlat_tcne2")
 
 [node name="World1" type="Node2D" groups=["world"]]
 y_sort_enabled = true
 script = ExtResource("1_drukt")
+worldName = "Forest"
+enemySprite = Array[Texture]([null])
+maxLevel = 5
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -69,3 +124,58 @@ position = Vector2(-66, -156)
 
 [node name="SpawnPosition" type="Marker2D" parent="." groups=["spawnPosition"]]
 position = Vector2(-813, 58)
+
+[node name="SpawnEnemy" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_y0gif")
+
+[node name="BoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -276.0
+offset_top = -94.0
+offset_right = 276.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_45d76")
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TimeSpawn" type="Label" parent="CanvasLayer/Control/BoxContainer"]
+layout_mode = 2
+text = "0.00s"
+horizontal_alignment = 1
+
+[node name="NumMonsters" type="Label" parent="CanvasLayer/Control/BoxContainer"]
+layout_mode = 2
+text = "0/20 Enemies"
+horizontal_alignment = 1
+
+[node name="SpawnEnemyButton" type="Button" parent="CanvasLayer/Control/BoxContainer"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "upgrade enemy spawner
+cost: 2 PX
+spawn time: 5s"
+
+[connection signal="timeout" from="SpawnEnemy" to="." method="_on_spawn_enemy_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/BoxContainer/SpawnEnemyButton" to="." method="_on_spawn_enemy_button_pressed"]

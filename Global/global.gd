@@ -1,8 +1,8 @@
-class_name global
+extends Node
 
 #var dictionarySave: Dictionary
 var playerDataArray: Array[Player]
-var totalPX: int = 0
+var playerExperience: int = 0
 
 const savePath: String = "user://idlerpgdata.save"
 
@@ -12,6 +12,21 @@ var totalLevel: int:
 		for player in playerDataArray:
 			total += player.level
 		return total
+
+# Meaning: The amount of players that can be added maximum, which depending on cumulative levels of all players (3 level 3 players = 9 levels cumulative = 4)
+var availablePlayers: int:
+	get:
+		return totalLevel/2
+
+var totalPlayers: int:
+	get:
+		return playerDataArray.size()
+
+func createNewPlayer() -> Player:
+	# This means I am creating a player that needs a name (will be dealt with) at level 1, 0 exp, 20 required exp, and joinTime to be set (will be dealt with)
+	var newPlayer: Player = Player.new("", 1, 0, 20, -1)
+	playerDataArray.append(newPlayer)
+	return newPlayer
 
 func saveGame() -> void:
 	var save_game: FileAccess = FileAccess.open(savePath, FileAccess.WRITE)
@@ -24,6 +39,7 @@ func saveGame() -> void:
 			"name": playerData.name,
 			"level": playerData.level,
 			"exp": playerData.exp,
+			"experienceRequired": playerData.experienceRequired,
 			"joinTime": playerData.joinTime
 		}
 		playerEntitiesArray.append(playerDataDictionary)
@@ -31,7 +47,7 @@ func saveGame() -> void:
 	# Now lets wrap every single data we need to save in a dictionary
 	var dictionaryToSave: Dictionary = {
 		"playerDataArray": playerEntitiesArray,
-		"totalPX": totalPX
+		"playerExperience": playerExperience
 	}
 	
 	var json_string: String = JSON.stringify(dictionaryToSave)
@@ -58,8 +74,10 @@ func loadGame() -> void:
 		
 		# Refill the variables listed above
 		for playerDictionary in node_data["playerDataArray"]:
-			var playerToAdd: Player = Player.new(playerDictionary["name"], playerDictionary["level"], playerDictionary["exp"], playerDictionary["joinTime"])
+			var playerToAdd: Player = Player.new(playerDictionary["name"], playerDictionary["level"], playerDictionary["exp"], playerDictionary["experienceRequired"], playerDictionary["joinTime"])
 			playerDataArray.append(playerToAdd)
 		
-		totalPX = node_data["totalPX"]
+		playerExperience = node_data["playerExperience"]
 
+func addExperience(exp: int) -> void:
+	playerExperience += exp

@@ -1,3 +1,4 @@
+class_name PlayerEntity
 extends CharacterBody2D
 
 enum States {IDLE, WANDER, CHASE, COMBAT, DEAD}
@@ -8,14 +9,17 @@ var health: int = 100
 
 var damage: int = 10
 
-var currentLevel: int = 1
-var expRequired: int = 20
-var exp: int = 0
-
 var speed: float = 70.0
 var sightRange: float = 600.0
 var attackRange: float = 30.0
 var enemyTarget: CharacterBody2D
+
+# Purpose of this variable: You want to save your data and when initialized, this will initialize the stats
+var playerObject: Player
+
+var currentLevel: int = 1
+var expRequired: int = 20
+var exp: int = 0
 
 @onready var navigationAgent: NavigationAgent2D = $NavigationAgent2D
 
@@ -25,15 +29,29 @@ var enemyTarget: CharacterBody2D
 @onready var levelLabel = $Control/LevelLabel
 
 @onready var main = get_tree().get_nodes_in_group("main")[0]
-@onready var world = get_tree().get_nodes_in_group("world")[0]
+
+#@onready var world = get_tree().get_nodes_in_group("world")[0]
+
+# Refactor: May be multiple worlds at once, and we can probably assume that the player is always under a world node.
+@onready var world = self.get_parent()
 
 @onready var weaponAnimation := preload("res://GameObjects/WeaponAnimation.tscn")
 
-@onready var usernameGenerator := get_tree().get_nodes_in_group("usernameGenerator")[0]
+#@onready var usernameGenerator := get_tree().get_nodes_in_group("usernameGenerator")[0]
 
 func _ready() -> void:
 	$AnimationPlayer.play("idle")
-	nameLabel.text = usernameGenerator.returnRandomUsername()
+#	nameLabel.text = UsernameGenerator.returnRandomUsername()
+
+# Basically, when they are instantiated they will be given a playerObject and they can see what information they have when created
+# This allows them to load that player save data
+func loadPlayerData(playerData: Player) -> void:
+	playerObject = playerData
+	nameLabel.text = playerObject.name
+	currentLevel = playerObject.level
+	expRequired = playerObject.experienceRequired
+	exp = playerObject.exp
+	
 
 func _physics_process(delta: float) -> void:
 #	$AnimationPlayer.play("idle")
@@ -116,6 +134,11 @@ func isDead() -> bool:
 	if state == States.DEAD:
 		return true
 	return false
+
+# So when we save the game we have these information
+func updatePlayerObject() -> void:
+	playerObject.exp = exp
+	playerObject.level = currentLevel
 	
 func calculateexpRequiredForLevel(levelTo: int) -> int:
 	return 10 * pow((levelTo - 1), 2)+ 10 * (levelTo - 1)
@@ -129,8 +152,11 @@ func giveExp(expAmount: int) -> void:
 func levelCheck() -> void:
 	while exp >= expRequired:
 		exp -= expRequired
+		
 		currentLevel += 1
-		main.addLevel()
+		Global.totalLevel += 1
+		
+		main.updateUI()
 		expRequired = calculateexpRequiredForLevel(currentLevel + 1)
 		levelLabel.text = "level " + str(currentLevel)
 #		print(nameLabel.text + " is now level " + str(currentLevel))

@@ -1,15 +1,66 @@
+class_name World
 extends Node2D
+
+# Variables that determine different types of worlds:
+
+@export var worldName: String
+
+# Index 0 sprite goes with index 0 attack
+@export var enemySprite: Array[Texture]
+@export var enemyAttack: Array[Texture]
+@export var enemyDamage: Array[int]
+@export var enemyHealth: Array[int]
+@export var enemyExpValue: Array[int]
+
+#maxLevel in main node section also technecially belongs here but just assume all export vars are differentiating them
+
+# ----------------------------------------------------
+
+# Save/load these variables:
+
+var upgradeLevel: int
+
+# ----------------------------------------------------
+
+# This is for the main node to see, to make sure they are able to put players and also to know what players to put in:
+
+var playersInside: Array[Player]
+@export var maxLevel: int # This is only meant to be a recommendation: If you have level 15 zone but a level 20 player wants to join, it will not unless there is no other worlds.
+
+#------------------------------------------------------
 
 @onready var tileMap: TileMap = $TileMap
 @onready var camera2D: Camera2D = $Camera2D
+@onready var spawnPosition: Marker2D = $SpawnPosition
 
 @onready var EnemyEntity := preload("res://GameObjects/EnemyEntity.tscn")
 
 var validEnemyLocations: Array # Array of vector2
 var validPlayerLocations: Array # Array of vector2
 
+@onready var timeSpawnLabel = $CanvasLayer/Control/BoxContainer/TimeSpawn
+@onready var numMonstersLabel = $CanvasLayer/Control/BoxContainer/NumMonsters
+
+@onready var main = get_tree().get_nodes_in_group("main")[0]
+
 var groundTerrainSet: int = 0
 var rng := RandomNumberGenerator.new()
+
+var maxSpawnLimit: int = 50
+var upgradeCost: int = 2
+
+func getEnemyCount() -> int:
+	var enemyCount: int = 0
+	
+	for node in self.get_children():
+		if node.is_in_group("enemy"):
+			enemyCount += 1
+	
+	return enemyCount
+
+func _physics_process(delta) -> void:
+	timeSpawnLabel.text = str("%.1f" % $SpawnEnemy.time_left) + "s"
+	numMonstersLabel.text = str(getEnemyCount()) + "/" + str(maxSpawnLimit) + " Enemies"
 
 func _ready() -> void:
 	# Reason for this function: Need to remove navigation from tiles where obstacles like water is present.
@@ -91,3 +142,26 @@ func spawnEnemyAtRandomLocation() -> void:
 # This function is meant to be called by player to wander
 func returnValidPlayerLocation() -> Vector2:
 	return validPlayerLocations[rng.randi_range(0, validPlayerLocations.size()-1)]
+
+func updateUpgradeAvailability() -> void:
+	if Global.playerExperience >= upgradeCost:
+		$CanvasLayer/Control/BoxContainer/SpawnEnemyButton.disabled = false
+	else:
+		$CanvasLayer/Control/BoxContainer/SpawnEnemyButton.disabled = true
+
+func _on_spawn_enemy_timeout():
+	if getEnemyCount() < maxSpawnLimit:
+		spawnEnemyAtRandomLocation()
+
+func _on_spawn_enemy_button_pressed():
+	print($SpawnEnemy.wait_time)
+	if $SpawnEnemy.wait_time > 0.1 and Global.playerExperience >= upgradeCost:
+#		$SpawnEnemy.stop()
+		Global.playerExperience -= upgradeCost
+		main.updateUI()
+		upgradeCost += upgradeCost/2
+		$SpawnEnemy.wait_time /= 1.2
+		$CanvasLayer/Control/BoxContainer/SpawnEnemyButton.text = "upgrade enemy spawner\ncost: " + str(upgradeCost) + " PX\nspawn time: " + str("%.1f" % $SpawnEnemy.wait_time) + "s"
+#		$SpawnEnemy.start()
+
+		updateUpgradeAvailability()
