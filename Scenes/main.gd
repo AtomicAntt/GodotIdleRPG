@@ -7,6 +7,7 @@ var levelInstances: Array[Node2D]
 
 @onready var playerExperienceLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerExperienceLabel
 @onready var playerLevelsLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerLevelsLabel
+@onready var playerSpawnTimer = $PlayerSpawnTimer
 
 #@onready var timeSpawnLabel = $Main2D/CanvasLayer/Control/BoxContainer/TimeSpawn
 #@onready var numMonstersLabel = $Main2D/CanvasLayer/Control/BoxContainer/NumMonsters
@@ -21,8 +22,12 @@ var upgradeCost: int = 2
 
 func _ready() -> void:
 	loadLevel("World1")
+	updateUI()
 
 func unloadLevel() -> void:
+	if levelInstances.size() <= 0:
+		return
+
 	if is_instance_valid(levelInstances[0]):
 		levelInstances[0].queue_free()
 		levelInstances.pop_front()
@@ -46,19 +51,48 @@ func addExperience(expAmount: int) -> void:
 	Global.addExperience(expAmount)
 	updateUI()
 
-# These below 2 functions are used to add players as the game goes on to available worlds
+# These below 3 functions are used to add players as the game goes on to available worlds
 
 func addPlayer(playerToAdd: Player) -> void:
+	if levelInstances.size() <= 0:
+		return
+	
 	if is_instance_valid(levelInstances[0]):
-		var bestLevelToPutInto: World = levelInstances[0] # Future: Make the default the town level
+		var bestLevelToPutInto: World = null # If nothing, last resort is town
 		for level in levelInstances:
 			# Can I fit the player in this level (50 max)? Is he even able to enter w/ level restrictions?
 			if level.playersInside.size() < maxSpawnLimit and playerToAdd.level <= level.maxLevel:
 				bestLevelToPutInto = level
-		
-		var playerInstance: PlayerEntity = playerEntity.instantiate()
-		playerInstance.loadPlayerData(playerToAdd)
-		bestLevelToPutInto.add_child(playerInstance)
-		playerInstance.global_position = bestLevelToPutInto.spawnPosition.global_position
+		if bestLevelToPutInto != null:
+			# Here is actually adding the player once the checks are all done.
+			bestLevelToPutInto.playersInside.append(playerToAdd)
+			var playerInstance: PlayerEntity = playerEntity.instantiate()
+			bestLevelToPutInto.add_child(playerInstance)
+			playerInstance.loadPlayerData(playerToAdd)
+			playerInstance.global_position = bestLevelToPutInto.spawnPosition.global_position
+			updateUI() # Purpose: Adding a player actually adds a level
+		else:
+			print("There is literally no space to put anyone anywhere!")
 	else:
 		print("There are no level instances!")
+
+func getTakenPlayers() -> Array[Player]:
+	var takenPlayers: Array[Player]
+	for level in levelInstances:
+		takenPlayers.append_array(level.playersInside)
+	return takenPlayers
+
+func _on_player_spawn_timer_timeout():
+	var playerToSpawn: Player = null
+	# First, can I just add a new guy in this MMO (First priority)?
+	if Global.canAddPlayer:
+		print("Adding entirely new player")
+		playerToSpawn = Global.createNewPlayer()
+	else:
+		# Hmm, now we need to get a player that isnt in one of those playerInside arrays that the current worlds have
+		for player in Global.playerDataArray:
+			if player not in getTakenPlayers():
+				playerToSpawn = player
+				
+	if playerToSpawn != null:
+		addPlayer(playerToSpawn)

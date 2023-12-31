@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnjicqhnb0xc3"]
+[gd_scene load_steps=11 format=3 uid="uid://dnjicqhnb0xc3"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_drukt"]
 [ext_resource type="TileSet" uid="uid://cdoqusgjixrhn" path="res://GameObjects/WorldTilemap.tres" id="2_d7o4q"]
-[ext_resource type="PackedScene" uid="uid://cb7i211hwvfqi" path="res://GameObjects/PlayerEntity.tscn" id="3_cmhxp"]
 [ext_resource type="Script" path="res://Worlds/TouchCameraController.gd" id="3_mpyhr"]
 [ext_resource type="FontFile" uid="uid://1wjemhgfvl8t" path="res://GameAssets/Fonts/m5x7.ttf" id="5_k4vuj"]
 
@@ -117,10 +116,6 @@ limit_bottom = 500
 limit_smoothed = true
 editor_draw_limits = true
 script = ExtResource("3_mpyhr")
-
-[node name="PlayerEntity" parent="." instance=ExtResource("3_cmhxp")]
-y_sort_enabled = true
-position = Vector2(-66, -156)
 
 [node name="SpawnPosition" type="Marker2D" parent="." groups=["spawnPosition"]]
 position = Vector2(-813, 58)

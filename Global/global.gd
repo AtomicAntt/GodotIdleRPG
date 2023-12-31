@@ -22,6 +22,15 @@ var totalPlayers: int:
 	get:
 		return playerDataArray.size()
 
+var canAddPlayer: bool:
+	get:
+		# If there are 3 total players, each level 3, that means there are 9/2 = 4 available players.. since this is higher than 3 it is good.
+		# Second case: If there are only 0 or 1 players.. you could add another (so this just initialized 2 players)
+		if availablePlayers > totalPlayers or totalPlayers <= 1:
+			return true
+		else:
+			return false
+
 func createNewPlayer() -> Player:
 	# This means I am creating a player that needs a name (will be dealt with) at level 1, 0 exp, 20 required exp, and joinTime to be set (will be dealt with)
 	var newPlayer: Player = Player.new("", 1, 0, 20, -1)

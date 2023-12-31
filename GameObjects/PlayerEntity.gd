@@ -51,7 +51,11 @@ func loadPlayerData(playerData: Player) -> void:
 	currentLevel = playerObject.level
 	expRequired = playerObject.experienceRequired
 	exp = playerObject.exp
-	
+
+func updatePlayerData() -> void:
+	playerObject.level = currentLevel
+	playerObject.experienceRequired = expRequired
+	playerObject.exp = exp
 
 func _physics_process(delta: float) -> void:
 #	$AnimationPlayer.play("idle")
@@ -148,15 +152,17 @@ func giveExp(expAmount: int) -> void:
 #	print("giving " + str(nameLabel.text) + " " + str(expAmount) + " exp, now " + str(nameLabel.text) + " has " + str(exp) + " exp")
 	main.addExperience(expAmount)
 	levelCheck()
+	updatePlayerData()
+	main.updateUI()
 
 func levelCheck() -> void:
 	while exp >= expRequired:
 		exp -= expRequired
 		
 		currentLevel += 1
-		Global.totalLevel += 1
+#		Global.totalLevel += 1
 		
-		main.updateUI()
+#		main.updateUI()
 		expRequired = calculateexpRequiredForLevel(currentLevel + 1)
 		levelLabel.text = "level " + str(currentLevel)
 #		print(nameLabel.text + " is now level " + str(currentLevel))
