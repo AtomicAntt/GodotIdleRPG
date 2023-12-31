@@ -15,8 +15,8 @@ var totalLevel: int:
 
 # Meaning: The amount of players that can be added maximum, which depending on cumulative levels of all players (3 level 3 players = 9 levels cumulative = 4)
 var availablePlayers: int:
-	get:
-		return totalLevel/2
+	get: # Purpose of +2: There will always be 2 available players
+		return (totalLevel/2)+2
 
 var totalPlayers: int:
 	get:
@@ -24,8 +24,8 @@ var totalPlayers: int:
 
 var canAddPlayer: bool:
 	get:
-		# If there are 3 total players, each level 3, that means there are 9/2 = 4 available players.. since this is higher than 3 it is good.
-		# Second case: If there are only 0 or 1 players.. you could add another (so this just initialized 2 players)
+		# If there are 3 total players, each level 3, that means there are 9/2 = 4 more available players
+		# Second case: If there are only 0 or 1 players (so this just initialized 2 players)
 		if availablePlayers > totalPlayers or totalPlayers <= 1:
 			return true
 		else:
