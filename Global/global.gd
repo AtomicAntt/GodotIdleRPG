@@ -26,7 +26,7 @@ var canAddPlayer: bool:
 	get:
 		# If there are 3 total players, each level 3, that means there are 9/2 = 4 more available players
 		# Second case: If there are only 0 or 1 players (so this just initialized 2 players)
-		if availablePlayers > totalPlayers or totalPlayers <= 1:
+		if availablePlayers > totalPlayers:
 			return true
 		else:
 			return false
