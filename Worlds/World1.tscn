@@ -118,7 +118,7 @@ editor_draw_limits = true
 script = ExtResource("3_mpyhr")
 
 [node name="SpawnPosition" type="Marker2D" parent="." groups=["spawnPosition"]]
-position = Vector2(-813, 58)
+position = Vector2(-708, 47)
 
 [node name="SpawnEnemy" type="Timer" parent="."]
 wait_time = 5.0

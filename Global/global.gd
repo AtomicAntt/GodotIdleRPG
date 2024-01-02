@@ -16,7 +16,7 @@ var totalLevel: int:
 # Meaning: The amount of players that can be added maximum, which depending on cumulative levels of all players (3 level 3 players = 9 levels cumulative = 4)
 var availablePlayers: int:
 	get: # Purpose of +2: There will always be 2 available players
-		return (totalLevel/2)+2
+		return (totalLevel/3)+2
 
 var totalPlayers: int:
 	get:
@@ -35,6 +35,7 @@ func createNewPlayer() -> Player:
 	# This means I am creating a player that needs a name (will be dealt with) at level 1, 0 exp, 20 required exp, and joinTime to be set (will be dealt with)
 	var newPlayer: Player = Player.new("", 1, 0, 20, -1)
 	playerDataArray.append(newPlayer)
+	saveGame() # Purpose: Save game after the playerDataArray changes
 	return newPlayer
 
 func saveGame() -> void:
@@ -90,3 +91,4 @@ func loadGame() -> void:
 
 func addExperience(exp: int) -> void:
 	playerExperience += exp
+	saveGame() #Purpose: Save game whenever PX changes

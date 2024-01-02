@@ -278,6 +278,8 @@ texture_under = ExtResource("5_pkugy")
 texture_progress = ExtResource("6_8l6lu")
 tint_progress = Color(1, 0.152941, 0.109804, 1)
 
+[node name="DeathCleanup" type="Timer" parent="."]
+
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="UpdateNav" to="." method="_on_update_nav_timeout"]

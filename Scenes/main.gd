@@ -22,7 +22,9 @@ var upgradeCost: int = 2
 
 func _ready() -> void:
 	loadLevel("World1")
+	Global.loadGame()
 	updateUI()
+	
 
 func unloadLevel() -> void:
 	if levelInstances.size() <= 0:
