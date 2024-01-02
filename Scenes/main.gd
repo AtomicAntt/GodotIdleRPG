@@ -95,6 +95,7 @@ func _on_player_spawn_timer_timeout():
 		for player in Global.playerDataArray:
 			if player not in getTakenPlayers():
 				playerToSpawn = player
+				break # To make it so the last player isnt the guy added at the end
 				
 	if playerToSpawn != null:
 		addPlayer(playerToSpawn)
