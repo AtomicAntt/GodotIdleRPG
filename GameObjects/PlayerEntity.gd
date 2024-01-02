@@ -49,6 +49,7 @@ func loadPlayerData(playerData: Player) -> void:
 	playerObject = playerData
 	nameLabel.text = playerObject.name
 	currentLevel = playerObject.level
+	levelLabel.text = "level " + str(currentLevel)
 	expRequired = playerObject.experienceRequired
 	exp = playerObject.exp
 
