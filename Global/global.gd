@@ -33,7 +33,7 @@ var canAddPlayer: bool:
 
 func createNewPlayer() -> Player:
 	# This means I am creating a player that needs a name (will be dealt with) at level 1, 0 exp, 20 required exp, and joinTime to be set (will be dealt with)
-	var newPlayer: Player = Player.new("", 1, 0, 20, -1)
+	var newPlayer: Player = Player.new("", 1, 0, 20, -1, "")
 	playerDataArray.append(newPlayer)
 	saveGame() # Purpose: Save game after the playerDataArray changes
 	return newPlayer
@@ -50,7 +50,8 @@ func saveGame() -> void:
 			"level": playerData.level,
 			"exp": playerData.exp,
 			"experienceRequired": playerData.experienceRequired,
-			"joinTime": playerData.joinTime
+			"joinTime": playerData.joinTime,
+			"playerLook": playerData.playerLook
 		}
 		playerEntitiesArray.append(playerDataDictionary)
 	
@@ -84,7 +85,7 @@ func loadGame() -> void:
 		
 		# Refill the variables listed above
 		for playerDictionary in node_data["playerDataArray"]:
-			var playerToAdd: Player = Player.new(playerDictionary["name"], playerDictionary["level"], playerDictionary["exp"], playerDictionary["experienceRequired"], playerDictionary["joinTime"])
+			var playerToAdd: Player = Player.new(playerDictionary["name"], playerDictionary["level"], playerDictionary["exp"], playerDictionary["experienceRequired"], playerDictionary["joinTime"], playerDictionary["playerLook"])
 			playerDataArray.append(playerToAdd)
 		
 		playerExperience = node_data["playerExperience"]

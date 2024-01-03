@@ -69,6 +69,8 @@ func _ready() -> void:
 	recordValidEnemyPositions()
 	recordValidPlayerPositions()
 	fillBoundary()
+	
+	
 
 func fillBoundary() -> void:
 	const boundarySourceID: int = 1

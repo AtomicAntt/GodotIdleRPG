@@ -22,7 +22,6 @@ var expRequired: int = 20
 var exp: int = 0
 
 @onready var navigationAgent: NavigationAgent2D = $NavigationAgent2D
-
 @onready var healthBarUnder = $Control/HealthBarUnder
 @onready var healthBarOver = $Control/HealthBarOver
 @onready var nameLabel = $Control/NameLabel
@@ -52,6 +51,7 @@ func loadPlayerData(playerData: Player) -> void:
 	levelLabel.text = "level " + str(currentLevel)
 	expRequired = playerObject.experienceRequired
 	exp = playerObject.exp
+	$Sprite2D.texture = load(playerObject.playerLook)
 
 func updatePlayerData() -> void:
 	playerObject.level = currentLevel
