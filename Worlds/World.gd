@@ -41,7 +41,7 @@ var validPlayerLocations: Array # Array of vector2
 @onready var timeSpawnLabel = $CanvasLayer/Control/BoxContainer/TimeSpawn
 @onready var numMonstersLabel = $CanvasLayer/Control/BoxContainer/NumMonsters
 
-@onready var main = get_tree().get_nodes_in_group("main")[0]
+@onready var main: Main = get_tree().get_nodes_in_group("main")[0]
 
 var groundTerrainSet: int = 0
 var rng := RandomNumberGenerator.new()
@@ -69,7 +69,7 @@ func _ready() -> void:
 	recordValidEnemyPositions()
 	recordValidPlayerPositions()
 	fillBoundary()
-	
+	main.fillWorld(self)
 	
 
 func fillBoundary() -> void:

@@ -1,3 +1,4 @@
+class_name Main
 extends Control
 
 @onready var menu: Control = $Menu
@@ -21,8 +22,9 @@ var maxSpawnLimit: int = 50
 var upgradeCost: int = 2
 
 func _ready() -> void:
+	Global.loadGame()	
 	loadLevel("World1")
-	Global.loadGame()
+#	Global.loadGame()
 	updateUI()
 	
 
@@ -99,3 +101,22 @@ func _on_player_spawn_timer_timeout():
 				
 	if playerToSpawn != null:
 		addPlayer(playerToSpawn)
+
+func fillWorld(worldInstance: World) -> void:
+	if levelInstances.size() <= 0:
+		return
+	
+	# For (50) times, spawn player that is not taken already (this wont spawn completely new peoples) at random ground non adjacent to path or void
+	for i in range(maxSpawnLimit):
+		var playerToSpawn: Player = null
+		for player in Global.playerDataArray:
+			if player not in getTakenPlayers():
+				playerToSpawn = player
+				break # To make it so the last player isnt the guy added at the end
+		if playerToSpawn != null:
+			worldInstance.playersInside.append(playerToSpawn)
+			var playerInstance: PlayerEntity = playerEntity.instantiate()
+			worldInstance.add_child(playerInstance)
+			playerInstance.loadPlayerData(playerToSpawn)
+			playerInstance.global_position = worldInstance.returnValidPlayerLocation()
+			updateUI() # Purpose: Adding a player actually adds a level
