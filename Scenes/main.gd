@@ -8,6 +8,8 @@ var levelInstances: Array[Node2D]
 
 @onready var playerExperienceLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerExperienceLabel
 @onready var playerLevelsLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayerLevelsLabel
+@onready var playerTotalLabel = $Main2D/CanvasLayer/Control/VBoxContainer/PlayersTotalLabel
+
 @onready var playerSpawnTimer = $PlayerSpawnTimer
 
 #@onready var timeSpawnLabel = $Main2D/CanvasLayer/Control/BoxContainer/TimeSpawn
@@ -50,6 +52,7 @@ func loadLevel(levelName: String) -> void:
 func updateUI() -> void:
 	playerLevelsLabel.text = "PL: " + str(Global.totalLevel)
 	playerExperienceLabel.text = "PX: " + str(Global.playerExperience)
+	playerTotalLabel.text = "TP: " + str(Global.totalPlayers)
 
 func addExperience(expAmount: int) -> void:
 	Global.addExperience(expAmount)

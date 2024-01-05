@@ -45,6 +45,10 @@ text = "PX: n/a"
 layout_mode = 2
 text = "PL: n/a"
 
+[node name="PlayersTotalLabel" type="Label" parent="Main2D/CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "TP: n/a"
+
 [node name="Menu" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
